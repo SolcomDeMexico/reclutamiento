@@ -1,0 +1,13 @@
+<div><center>
+<% if permitted_to? :edit , @vacante%>
+<%= link_to 'Editar', edit_vacante_path(@vacante), :class => "primary button"%> 
+<% end %>
+<% if permitted_to? :cerrar, @vacante%>
+<% if @vacante.estatus != 'Cerrada'%>
+  <%= link_to 'Cerrar Vacante', {:controller => :vacantes, :action => "cerrar", :id => @vacante}, :class => "primary button"%>
+<% end %>
+<% end %>
+<% if permitted_to? :destroy , @vacante%>
+<%= link_to 'Eliminar', @vacante, :confirm => '¿Estás seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<% end %>
+<%= link_to 'Regresar', vacantes_path, :class => "primary button" %></center></div>

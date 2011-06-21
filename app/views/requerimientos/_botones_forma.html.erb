@@ -1,0 +1,10 @@
+    <div>
+  <center>
+	<% if @nuevo %>
+	<%= link_to_function "Crear Requerimiento", "document.getElementById('forma_requerimiento').submit();" , :class => 'primary button' %>
+	<% else %>
+	<%= link_to_function "Actualizar Requerimiento", "document.getElementById('forma_requerimiento').submit();" , :class=> 'primary button' %>
+	<% end %>
+  <%= link_to 'Regresar', requerimientos_path, :class => "primary button" %>
+</center>
+  </div>

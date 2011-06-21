@@ -1,0 +1,26 @@
+<center> <h1> Lista de Requerimientos </h1> </center>
+
+<br />
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Fecha de contratación deseada</th>    
+    <th>Estatus</th>
+  </tr>
+
+<% @requerimientos.each do |requerimiento| %>
+  <tr>
+    <td><%= link_to requerimiento.nombre, requerimiento %></td>
+    <td><%="%02d" % requerimiento.fecha_contratacion_deseada.day %>/<%= meses[requerimiento.fecha_contratacion_deseada.month-1] %>/<%= requerimiento.fecha_contratacion_deseada.year %></td>
+    <td><%= requerimiento.estatus %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<% if permitted_to? :create, Requerimiento.new %>
+<%= link_to 'Nuevo requerimiento', new_requerimiento_path, :class => "primary button" %>
+<% end %>

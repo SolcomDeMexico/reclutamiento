@@ -1,0 +1,16 @@
+<h1> Calificar entrevista</h1> 
+<center>
+<%= link_to_function "Calificar", "document.getElementById('forma_entrevista').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary button' %>
+<%= link_to "Cancelar", @entrevistum , :class => "primary button"%></center>
+<br/>
+<%= form_for(@entrevistum, :html => { :id => "forma_entrevista" })  do |f| %>
+
+<div class="field">
+    <%= f.label :calificación %><br/>
+    <%= f.number_field :calificacion , :min => 0, :max => 10%>
+  </div>
+  <div class="field">
+    <%= f.label :comentarios %><br />
+    <%= f.text_area :comentarios %>
+  </div>
+  <% end %>

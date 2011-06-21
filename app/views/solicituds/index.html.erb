@@ -1,0 +1,22 @@
+<center><h1>Lista de Solicitudes</h1></center>
+<br/>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Estatus</th>
+  </tr>
+
+<% @solicituds.each do |solicitud| %>
+  <tr>
+    <td><%= link_to solicitud.nombre, solicitud %></td>
+    <td><%= solicitud.estado %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<br />
+
+<% if permitted_to? :create, Solicitud.new %>
+<%= link_to 'Nueva Solicitud', new_solicitud_path, :class => "primary button" %>
+<% end %>

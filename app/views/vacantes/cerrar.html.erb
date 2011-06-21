@@ -1,0 +1,19 @@
+<h1>Cerrar Vacante</h1>
+<br/><center>
+<%= link_to_function "Cerrar", "document.getElementById('forma_vacante').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary button' %>
+<%= link_to "Cancelar", @vacante , :class => "primary button"%></center>
+<br/>
+<p>
+  <b>Nombre:</b>
+  <%= @vacante.nombre %>
+</p>
+<%= form_for(@vacante, :html => { :id => "forma_vacante" })  do |f| %>
+<div class="field">
+  <%= f.label :candidato_contratado %><br />
+  <%= f.collection_select(:usuario_id, @vacante.candidatos, :id , :nombre, options = {:prompt => "Ningún candidato fue contratado"})  %>
+  <%= f.hidden_field :estatus, :value => 'Cerrada' %>
+</div>
+
+
+<% end %>
+

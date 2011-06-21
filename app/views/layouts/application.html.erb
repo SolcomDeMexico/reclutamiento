@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title><%= @title %></title>
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+   <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.13.custom', :media => 'screen' %>
+	<%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+  <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+  <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+   <%= stylesheet_link_tag 'css3buttons', :media => 'screen' %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+  
+  <script>
+  // this allows jquery to be called along with scriptaculous and YUI without any conflicts
+  // the only difference is all jquery functions should be called with $j instead of $
+  // e.g. $j('#div_id').stuff instead of $('#div_id').stuff
+  var $j = jQuery.noConflict();
+</script>
+ 
+
+</head>
+<body>
+    <div class="container">
+		<%= render 'layouts/header' %>
+		<section class="round">
+			<%= yield %>
+		</section>
+		<%= render 'layouts/footer' %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<center><h1>Lista de Candidatos</h1></center>
+<br/>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Carrera</th>
+    <th>Teléfono</th>
+  </tr>
+  </tr>
+
+<% @candidatos.each do |candidato| %>
+  <tr>
+    <td><%= link_to candidato.nombre, candidato %></td>
+    <td><%= candidato.email %></td>
+    <td><%= candidato.carrera %></td>
+    <td><%= candidato.celular %></td>
+   </tr>
+<% end %>
+</table>
+
+<br />
+<% if permitted_to? :create, Candidato.new %>
+<%= link_to 'Nuevo Candidato', new_candidato_path, :class => "primary button" %>
+<% end %>

@@ -1,0 +1,32 @@
+<%= form_for(@departamento, :html => {:id => "forma_departamento"}) do |f| %>
+  <%= render 'botones_forma'%>
+<% if @departamento.errors.any? %><br/><center>
+    <div id="error_explanation">
+      <h2><%= pluralize(@departamento.errors.count, "error no permite", "errores no permiten") %> registrar este departamento:</h2>
+	<br/>
+      <ul>     
+          <% @departamento.errors.each do |msg| %>
+
+            <li><%= msg[1] %></li>
+            <% end %>
+
+      </ul>
+    </div></center>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />	
+    <%= f.text_field :nombre%>
+  </div>
+    <div class="field">
+    <%= f.label :descripción %><br />	
+    <%= f.text_area :descripcion%>
+    <%= f.hidden_field :area_id, :value => params[:area] %>
+  </div>
+  <div class="field">
+    <%= f.label :jefe %><br />	
+    <%= text_field_with_auto_complete :departamento,:jefe_name,{}, {:url => usuarios_path(:format => :js), :method => :get, :param_name => 'search' }	%>
+  </div>
+
+  <%= render 'botones_forma'%>  
+<% end %>

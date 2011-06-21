@@ -1,0 +1,7 @@
+<%=
+if @area
+  options_from_collection_for_select(@area.departamentos, :id, :nombre)
+else
+  options_for_select([["Selecciona un área primero", ""]])
+end
+%>

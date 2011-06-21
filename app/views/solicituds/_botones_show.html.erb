@@ -1,0 +1,8 @@
+<div><center>
+<% if permitted_to? :edit, @solicitud%>
+<%= link_to 'Editar', edit_solicitud_path(@solicitud), :class => "primary button"%> 
+<% end %>
+<% if permitted_to? :destroy, @solicitud%>
+<%= link_to 'Eliminar', @solicitud, :confirm => '¿Estás seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<% end %>
+<%= link_to 'Regresar', solicituds_path, :class => "primary button" %></center></div>

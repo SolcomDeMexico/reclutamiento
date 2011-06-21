@@ -1,0 +1,46 @@
+<%= form_for(@solicitud, :html => {:id => "forma_solicitud"}) do |f| %>
+  <%= render 'botones_forma'%>
+   <% if @solicitud.errors.any? %><br/><center>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solicitud.errors.count, "error no permite","errores no permiten") %> registrar esta solicitud:</h2>
+	<br/>
+      <ul>     
+          <% @solicitud.errors.each do |msg| %>
+
+            <li><%= msg[1] %></li>
+            <%if msg[1].include? "vacante"%>
+              <% if permitted_to? :create , Vacante.new %>
+            <%= link_to "Crea una vacante", new_vacante_path %> 
+            <% end %>
+            <% end %>
+            <%if msg[1].include? "candidato"%>
+              <% if permitted_to? :create, Candidato.new%>
+           <%= link_to "Crea un candidato", new_candidato_path %>
+          <% end %>
+            <% end %> 
+            
+           <% end %>
+          <br/>
+        
+      </ul>      
+    </div> </center>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :candidato %><br />
+    <% if params[:candidato] %>
+    <%= text_field_with_auto_complete :solicitud, :candidato_name, {:value => params[:candidato]},{:url => candidatos_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <% else %>
+    <%= text_field_with_auto_complete :solicitud, :candidato_name, {},{:url => candidatos_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :vacante %><br />
+    <% if params[:vacante] %>
+    <%= text_field_with_auto_complete :solicitud, :vacante_name, {:value => params[:vacante]},{:url => vacantes_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <% else %>
+        <%= text_field_with_auto_complete :solicitud, :vacante_name, {},{:url => vacantes_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <% end %>
+  </div>    
+  <%= render 'botones_forma'%>  
+<% end %>

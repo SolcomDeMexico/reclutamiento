@@ -1,0 +1,140 @@
+<center><p id="notice"><%= notice %></p></center>
+
+<h3>Detalles de vacante</h3>
+
+<%= render 'botones_show'%>
+<br/>
+<p>
+  <b>Nombre:</b>
+  <%= @vacante.nombre %>
+</p>
+<p>
+  <b>Área que solicita:</b>
+  <%= link_to @vacante.area.nombre, @vacante.area %>
+</p>
+<% if !@vacante.requerimiento.nil? %>
+<p>
+  <b>Requerimiento:</b>
+  <%= link_to @vacante.requerimiento.nombre, @vacante.requerimiento %>
+</p>
+<% end %> 
+<% if !@vacante.posicion.nil? %>
+<p>
+  <b>Posición:</b>
+  <%= link_to @vacante.posicion.nombre, @vacante.posicion %>
+</p>
+<% end %> 
+<p>
+  <b>Fecha de contratación deseada:</b>
+  <%= "%02d" % @vacante.fecha_deseada_contratacion.day %> /   <%=  meses[@vacante.fecha_deseada_contratacion.month-1]
+ %> /   <%= @vacante.fecha_deseada_contratacion.year %>
+</p>
+<p>
+  <b>Fecha de inicio del reclutamiento:</b>
+  <%= "%02d" % @vacante.fecha_inicio_reclutamiento.day %> /   <%=  meses[@vacante.fecha_inicio_reclutamiento.month-1]
+ %> /   <%= @vacante.fecha_inicio_reclutamiento.year %>
+</p>
+<p>
+  <b>Fecha de cierre del reclutamiento:</b>
+  <% if !@vacante.fecha_cierre_reclutamiento.nil? %>
+  <%= "%02d" % @vacante.fecha_cierre_reclutamiento.day %> /   <%=  meses[@vacante.fecha_cierre_reclutamiento.month-1]
+ %> /   <%= @vacante.fecha_cierre_reclutamiento.year %>
+  <% end %>
+</p>
+
+<p>
+  <b>Descripción:</b>
+  <%= @vacante.descripcion %>
+</p>
+<p>
+  <b>Responsabilidades:</b>
+  <%= @vacante.responsabilidades %>
+</p>
+
+<p>
+  <b>Habilidades:</b>
+  <%= @vacante.habilidades %>
+</p>
+
+<p>
+  <b>Competencias:</b>
+  <%= @vacante.competencias %>
+</p>
+<p>
+  <b>Estudios mínimos: </b>
+  <%= @vacante.estudios %>
+</p>
+<p>
+  <b>Pago mínimo: </b>
+  <%= @vacante.pago_minimo %>
+</p>
+<p>
+  <b>Pago máximo: </b>
+  <%= @vacante.pago_maximo %>
+</p>
+<p>
+  <b>Disponibilidad para viajar:</b>
+  <% if @vacante.requiere_viajar==true %>
+  Sí
+  <% else %>
+  No
+  <% end %>
+</p>
+<p>
+  <b>Tipo:</b>
+  <%= @vacante.tipo %>
+</p>
+<p>
+  <b>Estatus:</b>
+  <%= @vacante.estatus %>
+</p>
+
+<hr/>
+<h5>Información del sistema</h5>
+<p>
+  <b>Creado por:</b>
+  <%= link_to @usuario_crea.display_name , @usuario_crea %> -  <%="%02d" %  @vacante.created_at.day %>/<%= meses[@vacante.created_at.month-1] %>/<%= @vacante.created_at.year %> - <%= "%02d" % calcularHora(@vacante.created_at.hour) %>:<%= "%02d" % @vacante.created_at.min %>:<%= "%02d" % @vacante.created_at.sec %>
+</p>
+<p>
+  <b>Actualizado por:</b>
+  <%= link_to @usuario_actualiza.display_name, @usuario_actualiza %> -  <%= "%02d" % @vacante.updated_at.day %>/<%= meses[@vacante.updated_at.month-1] %>/<%= @vacante.updated_at.year %> - <%="%02d" % calcularHora(@vacante.updated_at.hour) %>:<%= "%02d" % @vacante.updated_at.min %>:<%= "%02d" % @vacante.updated_at.sec %>
+</p>
+
+<%= render 'botones_show'%>
+<br/>
+<br/>
+<div class="relaciones">
+<hr />
+</div>
+<br/>
+<center>
+  <% if permitted_to? :create, Solicitud.new %>
+<%= link_to 'Agregar Solicitud', new_solicitud_path(:vacante => @vacante.nombre), :class => "primary button", :align => "left" %>
+<% end %>
+</center>
+<br/>
+<b>Solicitudes asociadas a esta vacante:</b>
+<br/>
+<br/>
+<% if !@vacante.solicituds.empty? %>
+
+<table>
+  <tr>
+    <th>Solicitud</th>
+    <th>Estatus</th>
+  </tr>
+
+<% @vacante.solicituds.each do |solicitud| %>
+  <tr>
+    <td><%= link_to solicitud.nombre, solicitud %></td>
+    <td><%= solicitud.estado %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<% else %>
+<p>Ningún candidato ha aplicado a esta vacante</p>
+<% end%>
+
+  

@@ -1,0 +1,86 @@
+<center><p id="notice"><%= notice %></p></center>
+
+<h3>Detalles de requerimiento</h3>
+<%= render 'botones_show' %>
+
+<br/>
+<p>
+  <b>Nombre:</b>
+  <%= @requerimiento.nombre %>
+</p>
+<p>
+  <b>Área que solicita:</b>
+  <%= link_to @requerimiento.area.nombre, @requerimiento.area %>
+</p>
+<% if !@requerimiento.posicion.nil? %>
+<p>
+  <b>Posición:</b>
+  <%= link_to @requerimiento.posicion.nombre, @requerimiento.posicion %>
+</p>
+<% end %> 
+<p>
+  <b>Fecha Contratación deseada:</b>
+  <%= "%02d" % @requerimiento.fecha_contratacion_deseada.day %> /   <%=  meses[@requerimiento.fecha_contratacion_deseada.month-1]
+ %> /   <%= @requerimiento.fecha_contratacion_deseada.year %>
+</p>
+<p>
+  <b>Descripción:</b>
+  <%= @requerimiento.descripcion %>
+</p>
+<p>
+  <b>Responsabilidades:</b>
+  <%= @requerimiento.responsabilidades %>
+</p>
+
+<p>
+  <b>Habilidades:</b>
+  <%= @requerimiento.habilidades %>
+</p>
+
+<p>
+  <b>Competencias:</b>
+  <%= @requerimiento.competencias %>
+</p>
+<p>
+  <b>Estudios mínimos: </b>
+  <%= @requerimiento.estudios %>
+</p>
+<p>
+  <b>Requiere viajar: </b>
+  <% if @requerimiento.requiere_viajar == true  %> 
+  Sí 
+  <% else %>
+   No 
+  <% end %>
+</p>
+<p>
+  <b>Pago mínimo: </b>
+  <%= @requerimiento.pago_minimo %>
+</p>
+<p>
+  <b>Pago máximo: </b>
+  <%= @requerimiento.pago_maximo %>
+</p>
+<p>
+  <b>Tipo:</b>
+  <%= @requerimiento.tipo %>
+</p>
+<p>
+  <b>Estatus:</b>
+  <%= @requerimiento.estatus %>
+</p>
+<%= render 'botones_show' %>
+<br/>
+<hr/>
+<h5>Información del sistema</h5>
+<p>
+  <b>Creado por:</b>
+  <%= link_to @usuario_crea.display_name , @usuario_crea %> -  <%="%02d" %  @requerimiento.created_at.day %>/<%= meses[@requerimiento.created_at.month-1] %>/<%= @requerimiento.created_at.year %> - <%= "%02d" % calcularHora(@requerimiento.created_at.hour) %>:<%= "%02d" % @requerimiento.created_at.min %>:<%= "%02d" % @requerimiento.created_at.sec %>
+</p>
+<p>
+  <b>Actualizado por:</b>
+  <%= link_to @usuario_actualiza.display_name, @usuario_actualiza %> -  <%= "%02d" % @requerimiento.updated_at.day %>/<%= meses[@requerimiento.updated_at.month-1] %>/<%= @requerimiento.updated_at.year %> - <%="%02d" % calcularHora(@requerimiento.updated_at.hour) %>:<%= "%02d" % @requerimiento.updated_at.min %>:<%= "%02d" % @requerimiento.updated_at.sec %>
+</p>
+
+
+<br/>

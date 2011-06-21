@@ -1,0 +1,52 @@
+<%= form_for(@usuario, :html => { :multipart => true, :id => "forma_usuario" }) do  |f| %>
+  <% render 'botones_forma'%>
+  <% if @usuario.errors.any? %><center>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usuario.errors.count, "error no permite", "errores no permiten") %> registrar esta usuario:</h2>
+<br/>
+      <ul>     
+          <% @usuario.errors.each do |msg| %>
+
+            <li><%= msg[1] %></li>
+           <% end %>
+      </ul>
+    </div></center>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :display_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div> 
+  <div class="field">
+    <%= f.label :habilidades %><br />
+    <%= f.text_area :habilidades %>
+  </div> 
+  <div class="field">
+    <%= f.label :departamento%><br />
+    <%= f.collection_select(:departamento_id, Departamento.all, :id , :nombre, {:include_blank => "Selecciona un departamento" } )%>
+  </div>
+  <% if permitted_to? :asignar_roles , @usuario%>
+  <div class="field">
+    <%= f.label :roles %><br />
+     <% for role in Role.all %>
+      <%= check_box_tag "usuario[role_ids][]", role.id, @usuario.roles.include?(role) %>
+      <%=h role.titulo %><br />
+      <% end %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :foto %><br/>
+    <% if !@usuario.foto_file_name.blank? %>
+    <%= image_tag(@usuario.foto.url(:thumb)) %>
+    <% else %>
+    <%= image_tag("default.png") %>
+    <% end %><br/><br/>
+    <%= f.file_field :foto %> 
+  </div>
+  <br/>
+  <%= render 'botones_forma'%>  
+<% end %>

@@ -1,0 +1,95 @@
+<center><p id="notice"><%= notice %></p></center>
+<h3>Detalles de la posición</h3>
+<%= render 'botones_show'%>
+<br/>
+<p>
+  <b>Nombre:</b>
+  <%= @posicion.nombre %>
+</p>
+
+<p>
+  <b>Área:</b>
+  <%= link_to @posicion.area.nombre, @posicion.area %>
+</p>
+<br/>
+
+<h5>Información del sistema</h5>
+<p>
+  <b>Creado por:</b>
+  <%= link_to @usuario_crea.display_name, @usuario_crea %> -  <%= "%02d" % @posicion.created_at.day %>/<%= meses[@posicion.created_at.month-1] %>/<%= @posicion.created_at.year %> - <%= "%02d" % calcularHora(@posicion.created_at.hour) %>:<%= "%02d" % @posicion.created_at.min %>:<%= "%02d" % @posicion.created_at.sec %>
+</p>
+<p>
+  <b>Actualizado por:</b>
+  <%= link_to @usuario_actualiza.display_name , @usuario_actualiza %> -  <%= "%02d" % @posicion.updated_at.day %>/<%= meses[@posicion.updated_at.month-1] %>/<%= @posicion.updated_at.year %> - <%= "%02d" % calcularHora(@posicion.updated_at.hour) %>:<%= "%02d" % @posicion.updated_at.min %>:<%= "%02d" % @posicion.updated_at.sec %>
+</p>
+
+<%= render 'botones_show'%>
+<br/>
+<div class="relaciones">
+<hr />
+</div>
+<br/>
+<center>
+  <% if permitted_to? :create, Vacante.new %>
+<%= link_to 'Agregar Vacante', new_vacante_path(:posicion => @posicion.nombre), :class => "primary button", :align => "left" %>
+<% end %>
+</center>
+<br/>
+<b>Vacantes relacionadas a esta posición</b>
+<br/>
+<br/>
+<% if !@posicion.vacantes.empty? %>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Tipo</th>
+  </tr>
+
+<% @posicion.vacantes.each do |vacante| %>
+  <tr>
+    <td><%= link_to vacante.nombre, vacante %></td>
+    <td><%= vacante.tipo %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<% else %>
+<p>Esta posición no tiene ninguna vacante relacionada todavía</p>
+<% end%>
+
+<br/>
+<div class="relaciones">
+<hr />
+</div>
+<br/>
+<center>
+  <% if permitted_to? :create, Requerimiento.new %>
+<%= link_to 'Agregar Requerimiento', new_requerimiento_path(:posicion => @posicion.nombre), :class => "primary button", :align => "left" %>
+<% end %>
+</center>
+<br/>
+<b>Requerimientos relacionados a esta posición</b>
+<br/>
+<br/>
+<% if !@posicion.requerimientos.empty? %>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Tipo</th>
+  </tr>
+
+<% @posicion.requerimientos.each do |requerimiento| %>
+  <tr>
+    <td><%= link_to requerimiento.nombre, requerimiento %></td>
+    <td><%= requerimiento.tipo %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<% else %>
+<p>Esta posición no tiene ningun requerimiento relacionado todavía</p>
+<% end%>

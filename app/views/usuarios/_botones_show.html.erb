@@ -1,0 +1,5 @@
+<center>
+<% if permitted_to? :edit , @usuario %>
+<%= link_to 'Editar', edit_usuario_path(@usuario), :class => "primary button"%> 
+<% end %>
+</center>

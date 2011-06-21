@@ -1,0 +1,35 @@
+<% if current_action == "Convertido en Vacante"%>
+<h1>Convertir Requerimiento en Vacante</h1>
+<% else %>
+<h1>Rechazar Requerimiento</h1>
+<% end %>
+<br/>
+<p>
+  <b>Nombre:</b>
+  <%= @requerimiento.nombre %>
+</p>
+<%= form_for(@requerimiento, :html => { :id => "forma_requerimiento" })  do |f| %>
+<div class="field">
+  <%= f.label :comentarios %><br />
+  <%= f.text_area :comentarios_rh %>
+  <%= f.hidden_field :estatus, :value => current_action %>
+</div>
+<% if current_action == "Convertido en Vacante"%>
+<div class="field">
+    <%= f.label :pago_mínimo %><br />
+    <%= f.text_field :pago_minimo %>
+  </div>    
+  <div class="field">
+    <%= f.label :pago_máximo %><br />
+    <%= f.text_field :pago_maximo %>
+  </div>  
+<% end %>
+
+<% end %>
+
+<% if current_action == "Convertido en Vacante"%>
+<%= link_to_function "Convertir en Vacante", "document.getElementById('forma_requerimiento').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary button' %>
+<% else %>
+<%= link_to_function "Rechazar", "document.getElementById('forma_requerimiento').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary negative button' %>
+<% end %>
+<%= link_to "Cancelar", @requerimiento , :class => "primary button"%>

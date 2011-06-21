@@ -1,0 +1,10 @@
+  <div>
+  <center>
+	<% if @nuevo %>
+	<%= link_to_function "Crear Departamento", "document.getElementById('forma_departamento').submit();" , :class => 'primary button' %>
+	<% else %>
+	<%= link_to_function "Actualizar Departamento", "document.getElementById('forma_departamento').submit();" , :class=> 'primary button' %>
+	<% end %>
+  <%= link_to 'Regresar', areas_path, :class => "primary button" %>
+</center>
+</div>

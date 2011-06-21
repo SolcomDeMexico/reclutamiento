@@ -1,0 +1,10 @@
+  <div >
+  <center>
+	<% if @nuevo %>
+	<%= link_to_function "Crear Candidato", "document.getElementById('forma_candidato').submit();" , :class => 'primary button' %>
+	<% else %>
+	<%= link_to_function "Actualizar Candidato", "document.getElementById('forma_candidato').submit();" , :class=> 'primary button' %>
+	<% end %>
+  <%= link_to 'Regresar', candidatos_path, :class => "primary button" %>
+</center>
+  </div><br/>

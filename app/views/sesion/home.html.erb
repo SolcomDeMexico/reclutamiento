@@ -1,0 +1,15 @@
+<% if flash[:warning] or flash[:notice] %>
+<center><p id="error_explanation"><%= notice %></p></center>
+<% end %>
+<table>
+  <tr>
+    <td class="main">
+		<center>
+		<p>Bienvenido <b><%= 	current_user.display_name	=%></b> a la aplicación de reclutamiento de SOLCOM. <br/>
+		Ya te encuentras identificado como usuario de SOLCOM. </p></center>
+		<p></p>
+	</td>
+  </tr>
+ </table>
+ 
+    

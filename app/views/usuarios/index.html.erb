@@ -1,0 +1,27 @@
+<center><h1>Lista de Usuarios</h1></center>
+<br />
+
+<table class="centrar">
+  <tr>
+    <th>Foto</th>
+    <th>Nombre</th>
+    <th>Email</th>
+  </tr>
+
+<% @usuarios.each do |usuario| %>
+  <tr>
+    <td><% if !usuario.foto_file_name.blank? %>
+    <%= image_tag(usuario.foto.url(:thumb)) %>
+    <% else %>
+    <%= image_tag("default.png") %>
+    <% end %></td>
+    <td><%= link_to usuario.display_name , usuario%></td>
+    <td><%= usuario.email %></td>
+
+    
+  </tr>
+<% end %>
+
+</table>
+<br />
+  

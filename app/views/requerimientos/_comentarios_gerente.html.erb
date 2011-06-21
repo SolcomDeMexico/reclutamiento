@@ -1,0 +1,26 @@
+<% if current_action == "Aprobado por Gerente de Área"%>
+<h1>Aprobar Requerimiento</h1>
+<% else %>
+<h1>Rechazar Requerimiento</h1>
+<% end %>
+<br/>
+<p>
+  <b>Nombre:</b>
+  <%= @requerimiento.nombre %>
+</p>
+<%= form_for(@requerimiento, :html => { :id => "forma_requerimiento" })  do |f| %>
+<div class="field">
+  <%= f.label :comentarios %><br />
+  <%= f.text_area :comentarios_gerente %>
+  <%= f.hidden_field :estatus, :value => current_action %>
+</div>
+
+
+<% end %>
+
+<% if current_action == "Aprobado por Gerente de Área"%>
+<%= link_to_function "Aprobar", "document.getElementById('forma_requerimiento').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary button' %>
+<% else %>
+<%= link_to_function "Rechazar", "document.getElementById('forma_requerimiento').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary negative button' %>
+<% end %>
+<%= link_to "Cancelar", @requerimiento , :class => "primary button"%>

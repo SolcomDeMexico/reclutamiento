@@ -1,0 +1,179 @@
+<%= form_for(@candidato,  :html => { :multipart => true , :id => "forma_candidato"}) do |f| %>
+
+<br/>
+<%= render 'botones_forma'%>
+  <% if @candidato.errors.any? %>
+    <center><div id="error_explanation">
+      <h2><%= pluralize(@candidato.errors.count, "error no permite","errores no permiten") %> registrar a este candidato:</h2>
+	<br/>
+      <ul>     
+          <% @candidato.errors.each do |msg| %>
+
+            <li><%= msg[1] %></li>
+           <% end %>
+      </ul>
+    </div></center>
+  <% end %>
+<center><h4>Datos Personales</h4></center>
+<hr/>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_de_nacimiento%><br />
+    <%= f.date_select :fecha_nacimiento,:order => [:day, :month, :year], :use_month_names => meses, :end_year => Time.now.year-16, :start_year => Time.now.year - 60, :prompt => {:day => 'Día', :month => 'Mes', :year => 'Año'}  %>
+  </div>
+  <div class="field">
+    <%= f.label :domicilio %><br />
+    <%= f.text_field :domicilio %>
+  </div>
+  <div class="field">
+    <%= f.label :teléfono_de_casa %><br />
+    <%= f.telephone_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label :teléfono_celular %><br />
+    <%= f.telephone_field :celular %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :curriculum %><br/>
+    <% if !@candidato.curriculum_file_name.blank? %>
+    <%= link_to @candidato.curriculum_file_name,@candidato.curriculum.url %>
+    <% end %>
+    <%= f.file_field :curriculum %> 
+  </div>
+<br/><center><h4>Escolaridad</h4></center><hr/>
+  <div class="field">
+    <%= f.label :nivel %><br />
+    <%= f.select(:escolaridad,["Licenciatura","Maestría","Doctorado"]) %>
+  </div>
+  <div class="field">
+    <%= f.label :carrera %><br />
+    <%= f.text_field :carrera %>
+  </div>
+  <div class="field">
+    <%= f.label :promedio%><br />
+    <%= f.number_field :promedio,:min => 70, :max => 100 %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_de_ingreso %><br />
+    <%= f.date_select :fecha_ingreso_escuela,:discard_day => true,:order => [:day, :month, :year], :use_month_names => meses, :end_year => Time.now.year, :start_year => Time.now.year - 60, :prompt => {:day => 'Día', :month => 'Mes', :year => 'Año'}  %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_de_egreso %><br />
+    <%= f.date_select :fecha_egreso_escuela,:discard_day => true, :order => [:day, :month, :year], :use_month_names => meses, :end_year => Time.now.year+5, :start_year => Time.now.year - 60, :prompt => {:day => 'Día', :month => 'Mes', :year => 'Año'}  %>
+  </div>
+  <div class="field">
+    <%= f.label :cursos_o_conocimientos %><br />
+    <%= f.text_area :cursos_conocimientos %>
+  </div>
+  <div class="field">
+    <%= f.label :certificaciones %><br />
+    <%= f.text_area :certificaciones %>
+  </div>
+  <div class="field">
+    <%= f.label :idiomas %><br />
+    <%= f.text_area :idiomas %>
+  </div>
+  <div class="field">
+    <%= f.label :programas_de_cómputo %><br />
+    <%= f.text_area :programas_computacionales %>
+  </div>
+<br/><center><h4>Datos Laborales</h4></center><hr/>  
+  <div class="field">
+    <%= f.label :empleado_actualmente %><br />
+    <%= f.check_box :empleado_actualmente %>
+  </div>
+  <div class="field">
+    <%= f.label :sueldo_mensual_deseado_sin_descontar_impuestos_ %><br />
+    <%= f.text_field :sueldo_deseado %>
+  </div>
+  <div class="field">
+    <%= f.label :horario %><br />
+    <%= f.text_area :horario %>
+  </div>
+  <div class="field">
+    <%= f.label :disponibilidad_para_viajar %><br />
+    <%= f.check_box :disponibilidad_viaje %>
+  </div>
+  <div class="field">
+    <%= f.label :disponibilidad_para_cambio_de_residencia %><br />
+    <%= f.check_box :cambio_residencia %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_de_contratacion %><br />
+	<%= f.select(:tipo_contratacion,["Medio Tiempo","Tiempo Completo"])	%>
+  </div>
+<br/><center><h4>Principales áreas de experiencia</h4></center><hr/>
+  <div class="field">
+    <%= f.label :industria_o_sector_principal %><br />
+    <%= f.text_field :industria %>
+  </div>
+  <div class="field">
+    <%= f.label :años_de_experiencia_en_la_industria%><br />
+    <%= f.number_field :industria_experiencia,:min => 0, :max => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :departamento_o_área_principal_donde_se_ha_desempeñado %><br />
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    <%= f.label :años_de_experiencia_en_ese_departamento_o_área%><br />
+    <%= f.number_field :area_experiencia,:min => 0, :max => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :Áreas_de_interés %><br />
+    <%= f.text_area :areas_interes %>
+  </div>
+<br/>  <center><h4>Trayectoria</h4></center><hr/>
+    <div class="field">
+    <%= f.label :empresa %><br />
+    <%= f.text_field :empresa %>
+  </div>
+    <div class="field">
+    <%= f.label :puesto %><br />
+    <%= f.text_field :puesto %>
+  </div>
+    <div class="field">
+    <%= f.label :departamento_o_área %><br />
+    <%= f.text_field :departamento %>
+  </div>
+    <div class="field">
+    <%= f.label :fecha_de_ingreso %><br />
+    <%= f.date_select :ingreso_empresa,:discard_day => true,:order => [:day, :month, :year], :use_month_names => meses, :end_year => Time.now.year, :start_year => Time.now.year - 60, :prompt => {:day => 'Día', :month => 'Mes', :year => 'Año'}  %>
+  </div>
+  <div class="field">
+    <%= f.label :motivo_de_separación %><br />
+    <%= f.text_area :motivo_separacion %>
+  </div>
+<br/><center><h4>Referencias adicionales</h4></center><hr/>
+    <div class="field">
+    <%= f.label :Nombre %><br />
+    <%= f.text_field :ref_nombre %>
+  </div>
+    <div class="field">
+    <%= f.label :empresa %><br />
+    <%= f.text_field :ref_empresa %>
+  </div>
+    <div class="field">
+    <%= f.label :puesto %><br />
+    <%= f.text_field :ref_puesto %>
+  </div>
+    <div class="field">
+    <%= f.label :correo_electrónico %><br />
+    <%= f.email_field :ref_email %>
+  </div>
+    <div class="field">
+    <%= f.label :teléfono %><br />
+    <%= f.phone_field :ref_telefono %>
+  </div>
+  
+
+  
+  <%= render 'botones_forma'%>  
+<% end %>

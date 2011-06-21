@@ -1,0 +1,77 @@
+<%= form_for(@vacante, :html => {:id=> "forma_vacante"}) do |f| %>
+
+  <%= render 'botones_forma'%>
+<% if @vacante.errors.any? %><br/><center>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vacante.errors.count, "error no permite", "errores no permiten") %> registrar este vacante:</h2>
+<br/>
+      <ul>     
+          <% @vacante.errors.each do |msg| %>
+
+            <li><%= msg[1] %></li>
+           <% end %>
+      </ul>
+    </div></center>
+  <% end %>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <% if current_user_role != 'gerente_area' %>
+  <div class="field">
+    <%= f.label :Área_que_solicita %><br />
+    <%= f.collection_select(:area_id, Area.all, :id , :nombre, options = {:prompt => "Selecciona un área"})  %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :posicion %><br />
+    <% if params[:posicion] %>
+    <%= text_field_with_auto_complete :requerimiento, :posicion_name, {:value => params[:posicion]},{:url => posicions_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <% else %>
+    <%= text_field_with_auto_complete :requerimiento, :posicion_name, {},{:url => posicions_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :Fecha_de_contratación_deseada %><br />
+    <%= f.date_select :fecha_deseada_contratacion, :order => [:day, :month, :year], :use_month_names => meses, :end_year => Time.now.year+1, :start_year => Time.now.year, :prompt => {:day => 'Día', :month => 'Mes', :year => 'Año'}  %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :responsabilidades %><br />
+    <%= f.text_area :responsabilidades %>
+  </div>
+  <div class="field">
+    <%= f.label :habilidades_necesarias %><br />
+    <%= f.text_area :habilidades %>
+  </div>
+  <div class="field">
+    <%= f.label :competencias_necesarias %><br />
+    <%= f.text_area :competencias %>
+  </div>  
+  <div class="field">
+    <%= f.label :estudios_mínimos %><br />
+    <%= f.text_field :estudios %>
+  </div>
+  <div class="field">
+    <%= f.label :pago_mínimo %><br />
+    <%= f.text_field :pago_minimo %>
+  </div>    
+  <div class="field">
+    <%= f.label :pago_máximo %><br />
+    <%= f.text_field :pago_maximo %>
+  </div>  
+  <div class="field">
+    <%= f.label :requiere_viajar %><br />
+    <%= f.check_box :requiere_viajar %>
+  </div>  
+  <div class="field">
+  <%= f.label :tipo %><br />
+	<%= f.select(:tipo,["Medio Tiempo/Permanente","Tiempo Completo/Permanente","Medio Tiempo/Tempora","Tiempo Completo/Temporal","Práctica"])	%>
+  </div>
+  
+  
+  <%= render 'botones_forma'%>  
+<% end %>

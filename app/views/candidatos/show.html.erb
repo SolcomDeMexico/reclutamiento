@@ -1,0 +1,281 @@
+<center><p id="notice"><%= notice %></p></center>
+
+<h3>Detalles del candidato</h3>
+<%= render 'botones_show'%>
+<br/>
+
+<center><h4>Datos Personales</h4></center>
+
+<p>
+  <b>Nombre Completo:</b>
+  <%= @candidato.nombre %>
+</p>
+
+<p>
+  <b>Fecha de Nacimiento:</b>
+  <%= @candidato.fecha_nacimiento.day %> de <%= meses[@candidato.fecha_nacimiento.month-1] %> de <%= @candidato.fecha_nacimiento.year %>
+</p>
+
+<p>
+  <b>Domicilio Actual:</b>
+  <%= @candidato.domicilio %>
+</p>
+
+<p>
+  <b>Teléfono de Casa:</b>
+  <%= @candidato.telefono %>
+</p>
+
+<p>
+  <b>Teléfono Celular:</b>
+  <%= @candidato.celular %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @candidato.email %>
+</p>
+<p>
+  <b>Curriculum:</b>
+  <% if !@candidato.curriculum_file_name.blank? %>
+  <%= link_to @candidato.curriculum_file_name, @candidato.curriculum.url %>
+  <% end %>
+</p>
+<br/>
+<hr/>
+
+<center><h4>Escolaridad</h4></center>
+
+<p>
+  <b>Nivel:</b>
+  <%= @candidato.escolaridad %>
+</p>
+
+<p>
+  <b>Carrera:</b>
+  <%= @candidato.carrera %>
+</p>
+
+<p>
+  <b>Promedio:</b>
+  <%= @candidato.promedio %>
+</p>
+
+<p>
+  <b>Fecha de Ingreso:</b>
+  <% if !@candidato.fecha_ingreso_escuela.nil? %>
+ <%= meses[@candidato.fecha_ingreso_escuela.month-1] %> de <%= @candidato.fecha_ingreso_escuela.year %>
+  <% end %>
+</p>
+
+<p>
+  <b>Fecha de Egreso:</b>
+  <% if !@candidato.fecha_egreso_escuela.nil? %>
+  <%= meses[@candidato.fecha_egreso_escuela.month-1] %> de <%= @candidato.fecha_egreso_escuela.year %>
+  <% end %></p>
+
+<p>
+  <b>Cursos / Conocimientos:</b>
+  <%= @candidato.cursos_conocimientos %>
+</p>
+
+<p>
+  <b>Certificaciones:</b>
+  <%= @candidato.certificaciones %>
+</p>
+
+<p>
+  <b>Idiomas:</b>
+  <%= @candidato.idiomas %>
+</p>
+
+<p>
+  <b>Programas de Cómputo:</b>
+  <%= @candidato.programas_computacionales %>
+</p>
+<br/>
+<hr/>
+<center><h4>Datos Laborales</h4></center>
+
+<p>
+  <b>Empleado actualmente:</b>
+  <% if @candidato.empleado_actualmente==true %>
+  Sí
+  <% else %>
+  No
+  <% end %>
+</p>
+
+<p>
+  <b>Sueldo mensual deseado (Sin descontar impuestos):</b>
+  <%= @candidato.sueldo_deseado %>
+</p>
+
+<p>
+  <b>Horario:</b>
+  <%= @candidato.horario %>
+</p>
+
+<p>
+  <b>Disponibilidad para viajar:</b>
+  <% if @candidato.disponibilidad_viaje==true %>
+  Sí
+  <% else %>
+  No
+  <% end %>
+</p>
+
+<p>
+  <b>Disponibilidad para cambio de residencia:</b>
+  <% if @candidato.cambio_residencia==true %>
+  Sí
+  <% else %>
+  No
+  <% end %>
+</p>
+
+<p>
+  <b>Tipo de Contratación:</b>
+  <%= @candidato.tipo_contratacion %>
+</p>
+
+<br/>
+<hr/>
+
+<center><h4>Principales áreas de experiencia</h4></center>
+
+<p>
+  <b>Industria o sector principal:</b>
+  <%= @candidato.industria %>
+</p>
+
+<p>
+  <b>Años de experiencia en la industria:</b>
+  <%= @candidato.industria_experiencia %>
+</p>
+
+<p>
+  <b>Departamento o área principal donde se ha desempeñado:</b>
+  <%= @candidato.area %>
+</p>
+
+<p>
+  <b>Años de experiencia en ese departamento o área:</b>
+  <%= @candidato.area_experiencia %>
+</p>
+
+<p>
+  <b>Áreas de Interés:</b>
+  <%= @candidato.areas_interes %>
+</p>
+
+<br/>
+<hr/>
+
+<center><h4>Trayectoria</h4></center>
+
+<p>
+  <b>Empresa:</b>
+  <%= @candidato.empresa %>
+</p>
+
+<p>
+  <b>Puesto</b>
+  <%= @candidato.puesto %>
+</p>
+
+<p>
+  <b>Departamento o área:</b>
+  <%= @candidato.departamento %>
+</p>
+
+<p>
+  <b>Fecha de Ingreso:</b>
+  <% if !@candidato.ingreso_empresa.nil? %>
+    <%= meses[@candidato.ingreso_empresa.month-1] %> de <%= @candidato.ingreso_empresa.year %>
+  <% end %></p>
+
+<p>
+  <b>Motivo de separación:</b>
+  <%= @candidato.motivo_separacion %>
+</p>
+
+<br/>
+<hr/>
+
+<center><h4>Referencias adicionales</h4></center>
+
+<p>
+  <b>Nombre:</b>
+  <%= @candidato.ref_nombre %>
+</p>
+
+<p>
+  <b>Empresa:</b>
+  <%= @candidato.ref_empresa %>
+</p>
+
+<p>
+  <b>Puesto:</b>
+  <%= @candidato.ref_puesto %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @candidato.ref_email %>
+</p>
+
+<p>
+  <b>Teléfono:</b>
+  <%= @candidato.ref_telefono %>
+</p>
+
+<hr/>
+<center><h4>Información del sistema</h4></center>
+<p>
+  <b>Creado por:</b>
+  <%= link_to @usuario_crea.display_name, @usuario_crea %> -  <%= "%02d" % @candidato.created_at.day %>/<%= meses[@candidato.created_at.month-1] %>/<%= @candidato.created_at.year %> - <%="%02d" %  calcularHora(@candidato.created_at.hour) %>:<%= "%02d" % @candidato.created_at.min %>:<%= "%02d" % @candidato.created_at.sec %>
+</p>
+<p>
+  <b>Actualizado por:</b>
+  <%= link_to @usuario_actualiza.display_name , @usuario_actualiza %> -  <%= "%02d" % @candidato.updated_at.day %>/<%= meses[@candidato.updated_at.month-1] %>/<%= @candidato.updated_at.year %> - <%="%02d" %  calcularHora(@candidato.updated_at.hour) %>:<%="%02d" %  @candidato.updated_at.min %>:<%= "%02d" % @candidato.updated_at.sec %>
+</p>
+
+<%= render 'botones_show' %>
+
+<br/>
+<div class="relaciones">
+<hr />
+</div>
+<br/>
+<center>
+  <% if permitted_to? :create, Solicitud.new %>
+<%= link_to 'Agregar Solicitud', new_solicitud_path(:candidato => @candidato.nombre), :class => "primary button", :align => "left" %>
+<% end %>
+</center>
+<br/>
+<b>Vacantes a las que ha aplicado este candidato</b>
+<br/>
+<br/>
+<% if !@candidato.vacantes.empty? %>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Área</th>
+    <th>Estatus</th>
+  </tr>
+
+<% @candidato.vacantes.each do |vacante| %>
+  <tr>
+    <td><%= link_to vacante.nombre, vacante %></td>
+    <td><%= vacante.area.nombre %></td>
+    <td><%= vacante.estatus %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<% else %>
+<p>Este candidato no ha aplicado a ninguna vacante</p>
+<% end%>

@@ -1,0 +1,9 @@
+<div>
+<center>
+<% if permitted_to? :edit, @candidato %>
+<%= link_to 'Editar', edit_candidato_path(@candidato), :class => "primary button"%> 
+<% end %>
+<% if permitted_to? :destroy, @candidato %>
+<%= link_to 'Eliminar', @candidato, :confirm => '¿Estas seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<% end %>
+<%= link_to 'Regresar', candidatos_path, :class => "primary button" %></center></div>

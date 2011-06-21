@@ -1,0 +1,23 @@
+<center><h1>Lista de Posiciones</h1></center>
+<br/>
+
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Área</th>
+  </tr>
+  </tr>
+
+<% @posicions.each do |pos| %>
+  <tr>
+    <td><%= link_to pos.nombre, pos%></td>
+    <td><%= pos.area.nombre%></td>
+   </tr>
+<% end %>
+</table>
+
+<br />
+<% if permitted_to? :create, Posicion.new %>
+<%= link_to 'Nueva Posición', new_posicion_path, :class => "primary button" %>
+<% end %>

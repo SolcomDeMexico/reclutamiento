@@ -1,0 +1,9 @@
+<div>
+<center>
+<% if permitted_to? :edit, @posicion %>
+<%= link_to 'Editar', edit_posicion_path(@posicion), :class => "primary button"%> 
+<% end %>
+<% if permitted_to? :destroy, @posicion %>
+<%= link_to 'Eliminar', @posicion, :confirm => '¿Estas seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<% end %>
+<%= link_to 'Regresar', posicions_path, :class => "primary button" %></center></div>

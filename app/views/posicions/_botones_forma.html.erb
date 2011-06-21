@@ -1,0 +1,10 @@
+  <div>
+  <center>
+	<% if @nuevo %>
+	<%= link_to_function "Crear Posición", "document.getElementById('forma_posicion').submit();" , :class => 'primary button' %>
+	<% else %>
+	<%= link_to_function "Actualizar Posición", "document.getElementById('forma_posicion').submit();" , :class=> 'primary button' %>
+	<% end %>
+  <%= link_to 'Regresar', posicions_path, :class => "primary button" %>
+</center>
+</div>

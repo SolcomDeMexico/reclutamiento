@@ -1,0 +1,14 @@
+<div><center>
+<% if permitted_to? :edit , @entrevistum%>
+<%= link_to 'Editar', edit_entrevistum_path(@entrevistum), :class => "primary button"%> 
+<% end %>
+<% if permitted_to? :calificar , @entrevistum%>
+<%= link_to 'Calificar', {:controller => :entrevista, :action => "calificar", :id => @entrevistum}, :class => "primary button"%> 
+<% end %>
+<% if permitted_to? :cancelar , @entrevistum%>
+<%= link_to 'Cancelar', {:controller => :entrevista, :action => "cancelar", :id => @entrevistum}, :class => "primary negative button"%> 
+<% end %>
+<% if permitted_to? :destroy , @entrevistum%>
+<%= link_to 'Eliminar', @entrevistum, :confirm => '¿Estás seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<% end %>
+<%= link_to 'Regresar', entrevista_path, :class => "primary button" %></center></div>

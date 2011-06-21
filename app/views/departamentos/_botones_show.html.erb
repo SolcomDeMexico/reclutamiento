@@ -1,0 +1,9 @@
+<center> 
+<% if permitted_to? :edit, @departamento %>
+<%= link_to 'Editar', edit_departamento_path(@departamento), :class => "primary button"%> 
+<% end %>
+<% if permitted_to? :destroy, @departamento %>
+<%= link_to 'Eliminar', @departamento, :confirm => '¿Estas seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<% end %>
+<%= link_to 'Regresar', area_path(@departamento.area.id), :class => "primary button" %>
+</center>

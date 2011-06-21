@@ -1,0 +1,59 @@
+<center><p id="notice"><%= notice %></p></center>
+<h3>Detalles del departamento</h3>
+<%= render 'botones_show'%>
+<br/>
+<p>
+  <b>Nombre:</b>
+  <%= @departamento.nombre %>
+</p>
+
+<p>
+  <b>Descripción:</b>
+  <%= @departamento.descripcion %>
+</p>
+
+<p>
+  <b>Jefe:</b>
+  <%= link_to @jefe.display_name, @jefe %>
+
+</p>
+<hr/>
+<h5>Información del sistema</h5>
+<p>
+  <b>Creado por:</b>
+  <%= link_to @usuario_crea.display_name, @usuario_crea %> -  <%= "%02d" % @departamento.created_at.day %>/<%= meses[@departamento.created_at.month-1] %>/<%= @departamento.created_at.year %> - <%= "%02d" % calcularHora(@departamento.created_at.hour) %>:<%= "%02d" % @departamento.created_at.min %>:<%= "%02d" % @departamento.created_at.sec %>
+</p>
+<p>
+  <b>Actualizado por:</b>
+  <%= link_to @usuario_actualiza.display_name , @usuario_actualiza %> -  <%= "%02d" % @departamento.updated_at.day %>/<%= meses[@departamento.updated_at.month-1] %>/<%= @departamento.updated_at.year %> - <%= "%02d" % calcularHora(@departamento.updated_at.hour) %>:<%= "%02d" % @departamento.updated_at.min %>:<%= "%02d" % @departamento.updated_at.sec %>
+</p>
+
+<%= render 'botones_show'%>
+<br/>
+
+<div class="relaciones">
+<hr />
+</div>
+<br/>
+<br/>
+<b>Empleados que pertenecen a este departamento</b>
+<br/>
+<br/>
+<% if !@departamento.usuarios.empty? %>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+  </tr>
+
+<% @departamento.usuarios.each do |usuario| %>
+  <tr>
+    <td><%= link_to usuario.display_name, usuario %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<% else %>
+<p>Este departamento todavía no tiene ningún empleado</p>
+<% end%>

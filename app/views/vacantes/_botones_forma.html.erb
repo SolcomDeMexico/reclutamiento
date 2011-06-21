@@ -1,0 +1,10 @@
+  <div >
+  <center>
+	<% if @nuevo %>
+	<%= link_to_function "Crear Vacante", "document.getElementById('forma_vacante').submit();" , :class => 'primary button' %>
+	<% else %>
+	<%= link_to_function "Actualizar Vacante", "document.getElementById('forma_vacante').submit();" , :class=> 'primary button' %>
+	<% end %>
+  <%= link_to 'Regresar', vacantes_path, :class => "primary button" %>
+</center>
+  </div>

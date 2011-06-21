@@ -1,0 +1,45 @@
+<%= form_for(@entrevistum, :html => {:id => "forma_entrevista"}) do |f| %>
+  <%= render 'botones_forma'%>
+<% if @entrevistum.errors.any? %><br/><center>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entrevistum.errors.count, "error no permite", "errores no permiten") %> registrar esta entrevista:</h2>
+	<br/>
+      <ul>     
+          <% @entrevistum.errors.each do |msg| %>
+
+            <li><%= msg[1] %></li>
+            <% if msg[1].include? "solicitud"%>
+              <% if permitted_to? :create, Solicitud.new %>
+                <%= link_to "Crea una solicitud", new_solicitud_path %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+      </ul>
+    </div></center>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :solicitud %><br />	
+    <% if params[:solicitud] %>
+  	<%= text_field_with_auto_complete :entrevistum, :solicitud_name, {:value => params[:solicitud], :size => 65  },{:url => solicituds_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <% else %>
+    <%= text_field_with_auto_complete :entrevistum, :solicitud_name, {:size => 65  },{:url => solicituds_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <% end%>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br />
+    <%= f.datetime_select :fecha ,:prompt => {:day => 'Día', :month => 'Mes ',:year => 'Año', :hour => 'Hora', :minute => 'Minuto'},
+    :order => [:day, :month, :year], :use_month_names => meses,:end_year => Time.now.year+1,:start_year => Time.now.year, :minute_step => 15, :start_time => 8 %>
+  </div>
+  <div class="field">
+    <%= f.label :entrevistador%><br/>
+    <%= text_field_with_auto_complete :entrevistum,:entrevistador_name,{}, {:url => usuarios_path(:format => :js), :method => :get, :param_name => 'search' }	%>
+  </div>
+  <div class="field">
+    <%= f.label :ubicación %>  <br/>
+    <%= f.text_field :ubicacion%>
+  </div>
+
+  <%= render 'botones_forma'%>  
+<% end %>
