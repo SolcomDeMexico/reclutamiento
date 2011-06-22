@@ -126,7 +126,7 @@ class RequerimientosController < ApplicationController
     vacante.estatus = 'Abierta'
     vacante.posicion_id = requerimiento.posicion_id
     vacante.save!
-    redirect_to (vacante, :notice => 'La vacante fue creada exitosamente')
+    redirect_to(vacante, :notice => 'La vacante fue creada exitosamente')
 
   end
 
@@ -147,6 +147,4 @@ class RequerimientosController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
- 
 end
