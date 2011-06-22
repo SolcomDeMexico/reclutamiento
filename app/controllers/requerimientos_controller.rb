@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class RequerimientosController < ApplicationController  
   include RequerimientosHelper
   before_filter :authenticate

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Entrevistum < ActiveRecord::Base 
   include SesionHelper  
 	belongs_to :solicitud

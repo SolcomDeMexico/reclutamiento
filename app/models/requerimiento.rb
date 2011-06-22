@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Requerimiento < ActiveRecord::Base
   belongs_to :area
   belongs_to :posicion

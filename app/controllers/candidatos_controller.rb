@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class CandidatosController < ApplicationController
   # GET /candidatos
   # GET /candidatos.xml

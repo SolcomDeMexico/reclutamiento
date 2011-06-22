@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Posicion < ActiveRecord::Base  
   has_many :vacantes
   has_many :requerimientos

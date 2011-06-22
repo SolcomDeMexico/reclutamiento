@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UsuariosController < ApplicationController
   
   before_filter :authenticate

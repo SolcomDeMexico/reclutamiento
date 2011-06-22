@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Vacante < ActiveRecord::Base
   has_many :solicituds, :dependent => :destroy
 	#has_many :entrevistum, :through => :solicitud

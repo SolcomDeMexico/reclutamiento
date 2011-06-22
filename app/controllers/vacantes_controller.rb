@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class VacantesController < ApplicationController
   include VacantesHelper
   before_filter :authenticate

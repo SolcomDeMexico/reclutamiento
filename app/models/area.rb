@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Area < ActiveRecord::Base  
   has_many :vacantes
   has_many :departamentos, :dependent => :destroy

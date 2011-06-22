@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Departamento < ActiveRecord::Base
   belongs_to :area
   has_many :usuarios, :dependent => :destroy

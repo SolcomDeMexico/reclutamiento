@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'paperclip'
 class Candidato < ActiveRecord::Base
   ACCESS_KEY_ID = 'AKIAJ2XF5PYCBBFAWI3Q'

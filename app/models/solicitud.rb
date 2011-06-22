@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Solicitud < ActiveRecord::Base
 	belongs_to :vacante
 	belongs_to :candidato

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class EntrevistaController < ApplicationController
   # GET /entrevista
   # GET /entrevista.xml
