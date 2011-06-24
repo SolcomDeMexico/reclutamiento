@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Solicitud < ActiveRecord::Base
 	belongs_to :vacante
-	belongs_to :candidat
+	belongs_to :candidato
   has_one :area, :through => :vacante
 	has_many :entrevistum, :dependent => :destroy
 	validates_presence_of :vacante, :message => "El campo vacante es requerido."
