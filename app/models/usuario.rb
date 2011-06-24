@@ -36,7 +36,7 @@ class Usuario < ActiveRecord::Base
   end
   
   def area
-    Departamento.find(user.departamento_id).area
+    Departamento.find(self.departamento_id).area
   end
   
 	
