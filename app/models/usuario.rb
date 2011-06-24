@@ -15,7 +15,7 @@ class Usuario < ActiveRecord::Base
   #has_many :roles, :through => :rol_asignacions  
   
   #Definition of Roles
-  ROLES = %w[administrador empleado gerente_rh jefe_departamento gerente_area gerente_general gerente_area_df]
+  ROLES = %w[administrador empleado gerente_rh jefe_departamento gerente_area gerente_general]
   PERFILES = "<option>Ninguno</option><option>Monterrey</option><option>D.F.</option>"
   
   has_attached_file :foto,
