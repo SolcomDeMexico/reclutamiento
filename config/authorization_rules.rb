@@ -65,11 +65,12 @@ authorization do
     includes :empleado
     has_permission_on [:requerimientos,:vacantes,:posicions] do
       to :show      
-      if_attribute :area => {:lugar => is {"Monterrey"}},:area_id => is {Departamento.find(user.departamento_id).area.id}
+      if_attribute :area => {:lugar =>  "Monterrey"},:area_id => is {Departamento.find(user.departamento_id).area.id}
     end
     has_permission_on :candidatos do
       to :show
-      if_attribute :vacantes => {:area_id => is {Departamento.find(user.departamento_id).area.id}},:area => {:lugar => is {"Monterrey"}}
+      if_attribute :vacantes => {:area_id => is {Departamento.find(user.departamento_id).area.id}},
+      :vacantes => {:area => {:lugar =>  "Monterrey"}}
     end
     has_permission_on :solicituds do
       to :show
@@ -90,11 +91,12 @@ authorization do
     includes :empleado
     has_permission_on [:requerimientos,:vacantes,:posicions] do
       to :show      
-      if_attribute :area => {:lugar => is {"D.F."}},:area_id => is {Departamento.find(user.departamento_id).area.id}
+      if_attribute :area => {:lugar => "D.F."},:area_id => is {Departamento.find(user.departamento_id).area.id}
     end
     has_permission_on :candidatos do
       to :show
-      if_attribute :vacantes => {:area_id => is {Departamento.find(user.departamento_id).area.id}},:area => {:lugar => is {"D.F."}}
+      if_attribute :vacantes => {:area_id => is {Departamento.find(user.departamento_id).area.id}},
+      :vacantes => {:area => {:lugar => "D.F."}}
     end
     has_permission_on :solicituds do
       to :show
