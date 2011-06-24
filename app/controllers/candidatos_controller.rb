@@ -35,7 +35,7 @@ class CandidatosController < ApplicationController
   def new
 	@nuevo = true
   @candidato = Candidato.new
-	@candidatos = Candidato.find(:all, :conditions => ['nombre ILIKE ?',"%#{params[:search]}%"])
+	@candidatos = Candidato.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
 
 
     respond_to do |format|

@@ -1,6 +1,6 @@
 authorization do
   
-  role :admin do
+  role :administrador do
     title "Administrador del sistema"
     description "Usuario que se encarga del sistema y cuenta con todos los privilegios
     dentro del sistema"
@@ -15,8 +15,10 @@ authorization do
     de una entrevista si es el entrevistador."
     
     has_permission_on [:vacantes,:requerimientos,:candidatos,
-                      :solicituds,:entrevista], :to => :index                      
+                      :solicituds,:posicions], :to => :index                      
     has_permission_on :usuarios, :to => [:index, :show]
+    has_permission_on :areas, :to => [:show,:index]
+    has_permission_on :departamentos, :to => :show
     has_permission_on :usuarios do
       to :edit,:update
       if_attribute :id => is {user.id}
@@ -36,13 +38,63 @@ authorization do
     cuyo requerimiento haya sido creado por él. También, puede editar los requerimientos que hayan sido creados
     por él."
     includes :empleado
-    has_permission_on [:requerimientos,:vacantes] do
+    has_permission_on [:requerimientos,:vacantes,:posicions] do
       to :show
-      if_attribute :area_id => is {user.departamento.area.id}
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}
     end
     has_permission_on :candidatos do
       to :show
-      if_attribute :vacantes => {:area_id => is {user.departamento.area.id} }
+      if_attribute :vacantes => {:area_id => is {Departamento.find(user.departamento_id).area.id} }
+    end
+    has_permission_on :solicituds do
+      to :show
+      if_attribute :vacante => {:requerimiento => {:created_by =>  is {user.id} }}
+    end
+    has_permission_on :entrevista do
+      to [:show,:edit,:update,:cancelar]
+      if_attribute :solicitud => { :vacante => {:requerimiento => {:created_by =>  is {user.id} }}}
+    end
+    has_permission_on [:requerimientos,:entrevista], :to => [:create,:new]
+    has_permission_on :requerimientos do
+      to [:edit,:update,:cancelar]
+      if_attribute :created_by => is {user.id}
+    end
+  end
+  
+  role :jefe_departamento_mty do
+    includes :empleado
+    has_permission_on [:requerimientos,:vacantes,:posicions] do
+      to :show      
+      if_attribute :area => {:lugar => is {"Monterrey"}},:area_id => is {Departamento.find(user.departamento_id).area.id}
+    end
+    has_permission_on :candidatos do
+      to :show
+      if_attribute :vacantes => {:area_id => is {Departamento.find(user.departamento_id).area.id}},:area => {:lugar => is {"Monterrey"}}
+    end
+    has_permission_on :solicituds do
+      to :show
+      if_attribute :vacante => {:requerimiento => {:created_by =>  is {user.id} }}
+    end
+    has_permission_on :entrevista do
+      to [:show,:edit,:update,:cancelar]
+      if_attribute :solicitud => { :vacante => {:requerimiento => {:created_by =>  is {user.id} }}}
+    end
+    has_permission_on [:requerimientos,:entrevista], :to => [:create,:new]
+    has_permission_on :requerimientos do
+      to [:edit,:update,:cancelar]
+      if_attribute :created_by => is {user.id}
+    end
+  end
+  
+  role :jefe_departamento_df do
+    includes :empleado
+    has_permission_on [:requerimientos,:vacantes,:posicions] do
+      to :show      
+      if_attribute :area => {:lugar => is {"D.F."}},:area_id => is {Departamento.find(user.departamento_id).area.id}
+    end
+    has_permission_on :candidatos do
+      to :show
+      if_attribute :vacantes => {:area_id => is {Departamento.find(user.departamento_id).area.id}},:area => {:lugar => is {"D.F."}}
     end
     has_permission_on :solicituds do
       to :show
@@ -68,19 +120,61 @@ authorization do
     includes :jefe_departamento
     has_permission_on :requerimientos do
       to [:aprobar,:rechazar]
-      if_attribute :area_id => is {user.departamento.area.id}
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}
     end
     has_permission_on :requerimientos do
       to [:edit,:update,:destroy]
-      if_attribute :area_id => is {user.departamento.area.id}
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}
     end
     has_permission_on :entrevista do
       to [:edit,:update,:destroy,:cancelar]
-      if_attribute :solicitud => { :vacante => {:area_id  =>  is {user.departamento.area.id} }}
+      if_attribute :solicitud => { :vacante => {:area_id  =>  is {Departamento.find(user.departamento_id).area.id}}}
     end
     has_permission_on :vacantes do
       to :cerrar
-      if_attribute :area_id => is {user.departamento.area.id}
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}
+    end
+  end
+  
+  role :gerente_area_mty do
+    includes :jefe_departamento_mty
+    has_permission_on :requerimientos do
+      to [:aprobar,:rechazar]
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}, :area => {:lugar => "Monterrey"}
+    end
+    has_permission_on :requerimientos do
+      to [:edit,:update,:destroy]
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}, :area => {:lugar => "Monterrey"}
+    end
+    has_permission_on :entrevista do
+      to [:edit,:update,:destroy,:cancelar]
+      if_attribute :solicitud => { :vacante => {:area_id  =>  is {Departamento.find(user.departamento_id).area.id}}},
+      :area => {:lugar => "Monterrey"}
+    end
+    has_permission_on :vacantes do
+      to :cerrar
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}, :area => {:lugar => "Monterrey"}
+    end
+  end
+  
+  role :gerente_area_df do
+    includes :jefe_departamento_df
+    has_permission_on :requerimientos do
+      to [:aprobar,:rechazar]
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}, :area => {:lugar => "D.F."}
+    end
+    has_permission_on :requerimientos do
+      to [:edit,:update,:destroy]
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}, :area => {:lugar => "D.F."}
+    end
+    has_permission_on :entrevista do
+      to [:edit,:update,:destroy,:cancelar]
+      if_attribute :solicitud => { :vacante => {:area_id  =>  is {Departamento.find(user.departamento_id).area.id}}},
+      :area => {:lugar => "D.F."}
+    end
+    has_permission_on :vacantes do
+      to :cerrar
+      if_attribute :area_id => is {Departamento.find(user.departamento_id).area.id}, :area => {:lugar => "D.F."}
     end
   end
   
@@ -98,10 +192,65 @@ authorization do
     
   end
   
+  role :gerente_rh_mty do    
+    includes :gerente_area_mty
+    has_permission_on [:candidatos,:solicituds,:vacantes,:departamentos,:areas], :to => [:index,:create,:new]
+    has_permission_on [:candidatos,:solicituds,:vacantes,:departamentos] do
+      to [:show,:edit,:update,:destroy]
+      if_attribute :area => {:lugar => "Monterey" }
+    end
+    has_permission_on :areas do
+      to [:show,:edit,:update,:destroy]
+      if_attribute :lugar => "Monterey" 
+    end
+    has_permission_on :vacantes do
+      to  :cerrar
+      if_attribute :area => {:lugar => "Monterey" }
+    end
+    has_permission_on :requerimientos do
+      to  [:convertir,:rechazar_rh,:convertir_vacante]
+      if_attribute :area => {:lugar => "Monterey" }
+    end
+    has_permission_on :usuarios do 
+      to [:asignar_roles,:edit,:update]
+      if_attribute :area => {:lugar => "Monterey" }
+    end
+    
+  end
+  
+  role :gerente_rh_df do    
+    includes :gerente_area_df
+    has_permission_on [:candidatos,:solicituds,:vacantes,:departamentos,:areas], :to => [:index,:create,:new]
+    has_permission_on [:candidatos,:solicituds,:vacantes,:departamentos] do
+      to [:show,:edit,:update,:destroy]
+      if_attribute :area => {:lugar => "D.F." }
+    end
+    has_permission_on :areas do
+      to [:show,:edit,:update,:destroy]
+      if_attribute :lugar => "D.F." 
+    end
+    has_permission_on :vacantes do
+      to  :cerrar
+      if_attribute :area => {:lugar => "Monterey" }
+    end
+    has_permission_on :requerimientos do
+      to  [:convertir,:rechazar_rh,:convertir_vacante]
+      if_attribute :area => {:lugar => "Monterey" }
+    end
+    has_permission_on :usuarios do 
+      to [:asignar_roles,:edit,:update]
+      if_attribute :area => {:lugar => "Monterey" }
+    end
+    
+  end
+  
+  
+  
   role :gerente_general do
     title "Gerente General"
     description "Usuario que cuenta con todos los privilegios del sistema."
     has_omnipotence   
   end
- 
+    
+  
 end

@@ -21,9 +21,7 @@
 	<% end %>
     	<% tab.create_ajax(entrevista_path, 'Entrevistas') do %>
 	<% end %>
-  <%if current_user.roles.find_by_nombre('gerente_rh') != nil || current_user.roles.find_by_nombre('admin') != nil || current_user.roles.find_by_nombre('gerente_general') != nil %>
       	<% tab.create_ajax(areas_path, 'Areas') do %>
-	<% end %>
   <% end %>
     	<% tab.create_ajax(logout_path, 'Logout') do %>
 	<% end %>

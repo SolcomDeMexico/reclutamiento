@@ -1,7 +1,7 @@
 <div class="button-group"><center>
   <% if permitted_to? :edit , @requerimiento%>
     <% if @requerimiento.estatus != "Convertido en Vacante"%>
-      <% if !(@requerimiento.estatus != 'En aprobación' && (current_user_role == 'empleado' || current_user_role == 'jefe_departamento'))  %>
+      <% if !(@requerimiento.estatus != 'En aprobación' && (current_user.role == 'empleado' || current_user.role == 'jefe_departamento'))  %>
         <%= link_to 'Editar', edit_requerimiento_path(@requerimiento), :class => "primary  button" %> 
       <% end %>
     <% end %>

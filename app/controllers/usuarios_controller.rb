@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class UsuariosController < ApplicationController
-  
+  include UsuariosHelper
   before_filter :authenticate
   filter_resource_access 
   
@@ -19,7 +19,9 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.find(params[:id])
     @usuario_actualiza = Usuario.find(@usuario.updated_by)
     @departamento = Departamento.find(@usuario.departamento_id) if !@usuario.departamento_id.nil?
-
+    cambiar_roles_inverso(@usuario.role,@usuario.perfil)
+    @usuario.role = @rolInverso
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @usuario }
@@ -27,7 +29,9 @@ class UsuariosController < ApplicationController
   end
   
   def edit
-            @usuario = Usuario.find(params[:id])
+      @usuario = Usuario.find(params[:id])
+      cambiar_roles_inverso(@usuario.role,@usuario.perfil)
+      @usuario.role = @rolInverso
       respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @usuario }      
@@ -37,10 +41,13 @@ class UsuariosController < ApplicationController
     
   def asignar_roles
   end
+    
   
-  def update
-       @usuario = Usuario.find(params[:id])
+  def update  
+      @usuario = Usuario.find(params[:id])
+      cambiar_roles(params[:usuario][:role],params[:usuario][:perfil])            
       @usuario.updated_by = current_user.id
+      params[:usuario][:role]=@rol
     respond_to do |format|
       if @usuario.update_attributes(params[:usuario])
         format.html { redirect_to(@usuario, :notice => 'Usuario fue actualizado exitosamente.') }

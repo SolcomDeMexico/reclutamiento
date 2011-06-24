@@ -21,12 +21,7 @@ module SesionHelper
 	
 	def current_user
 		@current_user ||= user_from_remember_token
-  end
-  
-  def current_user_role
-    asignacion = RolAsignacion.find_by_usuario_id(current_user)
-    @rol = Role.find(asignacion.role_id).nombre
-  end
+  end  
 	
 	def authenticate
 		deny_access unless signed_in?

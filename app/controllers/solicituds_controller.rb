@@ -32,7 +32,7 @@ class SolicitudsController < ApplicationController
   def new
 	@nuevo = true
   @solicitud = Solicitud.new      
-    @solicituds = Solicitud.find(:all, :conditions => ['nombre ILIKE ?',"%#{params[:search]}%"])
+    @solicituds = Solicitud.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
 
     respond_to do |format|
       format.html # new.html.erb

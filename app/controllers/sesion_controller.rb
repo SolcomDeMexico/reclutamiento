@@ -22,11 +22,10 @@ before_filter :authenticate, :only => :home
                           :zona_horaria => horario) 
 		usuario.save
     usuario.updated_by = usuario.id
+    usuario.role = 'empleado'
+    usuario.perfil = 'Ninguno'
     usuario.save
 		usuario = Usuario.find_by_user_id(user_id)
-    rol = Role.find_by_nombre("empleado")
-    asignacion = RolAsignacion.new(:usuario_id => usuario.id , :role_id => rol.id )
-    asignacion.save
 		end 
 		sign_in usuario
 		redirect_to  :action => 'home'

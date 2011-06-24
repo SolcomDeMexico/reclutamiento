@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110614150004) do
+ActiveRecord::Schema.define(:version => 20110623211927) do
 
   create_table "areas", :force => true do |t|
     t.string   "nombre"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110614150004) do
     t.datetime "updated_at"
     t.integer  "created_by"
     t.integer  "updated_by"
+    t.string   "lugar"
   end
 
   create_table "candidatos", :force => true do |t|
@@ -125,20 +126,6 @@ ActiveRecord::Schema.define(:version => 20110614150004) do
     t.integer  "posicion_id"
   end
 
-  create_table "rol_asignacions", :force => true do |t|
-    t.integer  "usuario_id"
-    t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string   "nombre"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "titulo"
-  end
-
   create_table "solicituds", :force => true do |t|
     t.integer  "candidato_id"
     t.integer  "vacante_id"
@@ -165,6 +152,8 @@ ActiveRecord::Schema.define(:version => 20110614150004) do
     t.string   "foto_content_type"
     t.integer  "foto_file_size"
     t.integer  "updated_by"
+    t.string   "role"
+    t.string   "perfil"
   end
 
   create_table "vacantes", :force => true do |t|

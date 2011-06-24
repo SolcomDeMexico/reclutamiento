@@ -27,19 +27,19 @@
   </div> 
   <div class="field">
     <%= f.label :departamento%><br />
-    <%= f.collection_select(:departamento_id, Departamento.all, :id , :nombre, {:include_blank => "Selecciona un departamento" } )%>
-  </div>
-  <% if permitted_to? :asignar_roles , @usuario%>
+    <%= f.collection_select(:departamento_id, Departamento.all, :id , :nombre, {:include_blank => "Selecciona un departamento" } )%>  
+</div>
+<% if permitted_to? :asignar_roles,@usuario%>
   <div class="field">
-    <%= f.label :roles %><br />
-     <% for role in Role.all %>
-      <%= check_box_tag "usuario[role_ids][]", role.id, @usuario.roles.include?(role) %>
-      <%=h role.titulo %><br />
-      <% end %>
+    <%= f.label :perfil %><br/>
+    <%= f.collection_select(:role, Usuario::ROLES, :to_s , :humanize)%>  
   </div>
-  <% end %>
   <div class="field">
-    <%= f.label :foto %><br/>
+    <%= label_tag :rol %><br/>
+    <%= f.select(:perfil,["Ninguno","Monterrey","D.F."])%>
+<% end %>
+  <div class="field">
+    <%= f.label :foto%><br/>
     <% if !@usuario.foto_file_name.blank? %>
     <%= image_tag(@usuario.foto.url(:thumb)) %>
     <% else %>
