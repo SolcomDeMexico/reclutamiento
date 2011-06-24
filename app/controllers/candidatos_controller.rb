@@ -35,7 +35,7 @@ class CandidatosController < ApplicationController
   def new
 	@nuevo = true
   @candidato = Candidato.new
-	@candidatos = Candidato.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
+	#@candidatos = Candidato.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
 
 
     respond_to do |format|
@@ -54,11 +54,17 @@ class CandidatosController < ApplicationController
   # POST /candidatos
   # POST /candidatos.xml
   def create
+    logger.debug "error1"
     @id = current_user.id
+    logger.debug "error2"
     @nuevo = true    
-    @candidato = Candidato.new(params[:candidato])  
+    logger.debug "error3"
+    @candidato = Candidato.new(params[:candidato]) 
+    logger.debug "error4"
     @candidato.created_by = current_user.id
+    logger.debug "error5"
     @candidato.updated_by = current_user.id
+    logger.debug "error6"
 	 #@candidatos = Candidato.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
 
 	
@@ -66,11 +72,9 @@ class CandidatosController < ApplicationController
       if @candidato.save
         format.html { redirect_to(@candidato, :notice => 'Candidato fue creado exitosamente.') }
         format.xml  { render :xml => @candidato, :status => :created, :location => @candidato }
-		format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @candidato.errors, :status => :unprocessable_entity }
-		format.js
       end
     end
   end

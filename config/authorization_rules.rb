@@ -195,8 +195,12 @@ authorization do
   role :gerente_rh_mty do    
     includes :gerente_area_mty
     has_permission_on [:candidatos,:solicituds,:vacantes,:departamentos,:areas], :to => [:index,:create,:new]
+    has_permission_on :candidatos do
+      to :show
+      if_attribute :vacantes => {:area => {:lugar => "Monterrey"}}
+    end
     has_permission_on [:candidatos,:solicituds,:vacantes,:departamentos] do
-      to [:show,:edit,:update,:destroy]
+      to [:edit,:update,:destroy]
       if_attribute :area => {:lugar => "Monterey" }
     end
     has_permission_on :areas do
@@ -213,7 +217,7 @@ authorization do
     end
     has_permission_on :usuarios do 
       to [:asignar_roles,:edit,:update]
-      if_attribute :area => {:lugar => "Monterey" }
+      if_attribute :areas => {:lugar => "Monterey" }
     end
     
   end
@@ -225,8 +229,12 @@ authorization do
       to [:show,:edit,:update,:destroy]
       if_attribute :area => {:lugar => "D.F." }
     end
+    has_permission_on :candidatos do
+      to :show
+      if_attribute :vacantes => {:areas => {:lugar => "D.F."}}
+    end
     has_permission_on :areas do
-      to [:show,:edit,:update,:destroy]
+      to [:edit,:update,:destroy]
       if_attribute :lugar => "D.F." 
     end
     has_permission_on :vacantes do
@@ -239,7 +247,7 @@ authorization do
     end
     has_permission_on :usuarios do 
       to [:asignar_roles,:edit,:update]
-      if_attribute :area => {:lugar => "Monterey" }
+      if_attribute :areas => {:lugar => "Monterey" }
     end
     
   end

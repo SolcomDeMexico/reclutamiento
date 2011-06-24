@@ -7,7 +7,7 @@ class Candidato < ActiveRecord::Base
   has_many :solicituds, :dependent => :destroy	
   has_many :entrevistum, :through => :solicitud
   has_many :vacantes, :through => :solicituds
-  has_one :area, :through => :vacantes
+  #has_many :areas, :through => :vacantes
   
 	validates_presence_of :nombre, :message => "El nombre del candidato es requerido."
   validates_presence_of :fecha_nacimiento, :message => "La fecha de nacimiento del candidato es requerida."
