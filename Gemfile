@@ -8,7 +8,6 @@ gem 'rails', '3.0.6'
 gem 'rake'
 
 gem 'sqlite3'
-gem 'custom_error_message'
 gem 'omniauth', '0.2.0'
 gem 'json'
 gem 'httparty'

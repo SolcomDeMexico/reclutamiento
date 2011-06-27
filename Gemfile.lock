@@ -38,7 +38,6 @@ GEM
       xml-simple
     builder (2.1.2)
     crack (0.1.8)
-    custom_error_message (1.0.0)
     date_validator (0.6.2)
       activemodel (< 3.2.0, >= 3.0.0)
     declarative_authorization (0.5.3)
@@ -146,7 +145,6 @@ PLATFORMS
 DEPENDENCIES
   authlogic
   aws-s3
-  custom_error_message
   date_validator
   declarative_authorization
   httparty
