@@ -6,7 +6,7 @@ gem 'rails', '3.0.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'rake'
-
+gem 'custom_error_message'
 gem 'sqlite3'
 gem 'omniauth', '0.2.0'
 gem 'json'
