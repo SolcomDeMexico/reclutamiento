@@ -38,6 +38,7 @@ GEM
       xml-simple
     builder (2.1.2)
     crack (0.1.8)
+    custom_error_message (1.0.0)
     date_validator (0.6.2)
       activemodel (< 3.2.0, >= 3.0.0)
     declarative_authorization (0.5.3)
@@ -88,7 +89,7 @@ GEM
       oa-core (= 0.2.0)
       rack-openid (~> 1.2.0)
       ruby-openid-apps-discovery
-    oauth (0.4.4)
+    oauth (0.4.5)
     oauth2 (0.1.1)
       faraday (~> 0.5.0)
       multi_json (~> 0.0.4)
@@ -145,6 +146,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic
   aws-s3
+  custom_error_message
   date_validator
   declarative_authorization
   httparty
