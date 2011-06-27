@@ -39,7 +39,6 @@ class VacantesController < ApplicationController
       format.xml  { render :xml => @vacante }
     end
   end
-
   def edit
 	  @nuevo = false
     @vacante = Vacante.find(params[:id])
