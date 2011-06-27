@@ -46,7 +46,8 @@ class OAuth2::Client
 end
 
 def client
-  OAuth2::Client.new('3MVG9Km_cBLhsuPz2R3hJIVrGxOofT2aflzsqXEExhp1hqaOoc2EVVHRrBx5dc6dhg0MZCSEyYRQ7HQk_AVdA',
+  OAuth2::Client.new('	
+3MVG9Km_cBLhsuPz2R3hJIVrGxOofT2aflzsqXEExhp1hqaOoc2EVVHRrBx5dc6dhg0MZCSEyYRQ7HQk_AVdA',
     '5592815498170171723',
     :site => 'https://login.salesforce.com',
     :authorize_path =>'/services/oauth2/authorize',

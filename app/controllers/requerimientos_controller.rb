@@ -29,6 +29,7 @@ class RequerimientosController < ApplicationController
 	  @nuevo = true
     @requerimiento = Requerimiento.new
 
+
     respond_to do |format|
       format.html 
       format.xml  { render :xml => @requerimiento }

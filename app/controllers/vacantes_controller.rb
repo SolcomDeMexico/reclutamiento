@@ -54,7 +54,7 @@ class VacantesController < ApplicationController
     @vacante.estatus = 'Abierta'
     @vacante.fecha_inicio_reclutamiento = Date.today
     if @vacante.posicion.nil?
-      @vacante.area_id = current_user.departamento.area.id if @vacante.area_id.nil?
+      @vacante.area_id = Departamento.find(current_user.departamento_id).area.id if @vacante.area_id.nil?
     else
       @vacante.area_id = @vacante.posicion.area_id
     end
