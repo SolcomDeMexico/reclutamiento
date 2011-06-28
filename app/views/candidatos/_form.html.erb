@@ -7,9 +7,9 @@
       <h2><%= pluralize(@candidato.errors.count, "error no permite","errores no permiten") %> registrar a este candidato:</h2>
 	<br/>
       <ul>     
-          <% @candidato.errors.each do |msg| %>
-
-            <li><%= msg[1] %></li>
+          <% @candidato.errors.each do |attribute, errors_array| %>
+ 
+            <li><%= errors_array %></li>
            <% end %>
       </ul>
     </div></center>

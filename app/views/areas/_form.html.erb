@@ -5,9 +5,9 @@
       <h2><%= pluralize(@area.errors.count, "error no permite", "errores no permiten") %> registrar esta área:</h2>
 	<br/>
       <ul>     
-          <% @area.errors.each do |msg| %>
-
-            <li><%= msg[1] %></li>
+          <% @area.errors.each do |attribute, errors_array| %>
+ 
+            <li><%= errors_array %></li>
             <% end %>
 
       </ul>

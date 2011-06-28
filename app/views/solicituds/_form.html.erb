@@ -5,15 +5,15 @@
       <h2><%= pluralize(@solicitud.errors.count, "error no permite","errores no permiten") %> registrar esta solicitud:</h2>
 	<br/>
       <ul>     
-          <% @solicitud.errors.each do |msg| %>
-
-            <li><%= msg[1] %></li>
-            <%if msg[1].include? "vacante"%>
+          <% @solicitud.errors.each do |attribute, errors_array| %>
+ 
+            <li><%= errors_array %></li>
+            <%if errors_array.include? "vacante"%>
               <% if permitted_to? :create , Vacante.new %>
             <%= link_to "Crea una vacante", new_vacante_path %> 
             <% end %>
             <% end %>
-            <%if msg[1].include? "candidato"%>
+            <%if errors_array.include? "candidato"%>
               <% if permitted_to? :create, Candidato.new%>
            <%= link_to "Crea un candidato", new_candidato_path %>
           <% end %>

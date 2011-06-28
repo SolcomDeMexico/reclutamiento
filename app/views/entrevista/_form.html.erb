@@ -5,10 +5,10 @@
       <h2><%= pluralize(@entrevistum.errors.count, "error no permite", "errores no permiten") %> registrar esta entrevista:</h2>
 	<br/>
       <ul>     
-          <% @entrevistum.errors.each do |msg| %>
-
-            <li><%= msg[1] %></li>
-            <% if msg[1].include? "solicitud"%>
+          <% @entrevistum.errors.each do |attribute, errors_array| %>
+ 
+            <li><%= errors_array %></li>
+            <% if errors_array.include? "solicitud"%>
               <% if permitted_to? :create, Solicitud.new %>
                 <%= link_to "Crea una solicitud", new_solicitud_path %>
               <% end %>

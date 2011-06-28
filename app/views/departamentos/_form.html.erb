@@ -5,9 +5,9 @@
       <h2><%= pluralize(@departamento.errors.count, "error no permite", "errores no permiten") %> registrar este departamento:</h2>
 	<br/>
       <ul>     
-          <% @departamento.errors.each do |msg| %>
-
-            <li><%= msg[1] %></li>
+          <% @departamento.errors.each do |attribute, errors_array| %>
+ 
+            <li><%= errors_array %></li>
             <% end %>
 
       </ul>

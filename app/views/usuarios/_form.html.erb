@@ -5,9 +5,9 @@
       <h2><%= pluralize(@usuario.errors.count, "error no permite", "errores no permiten") %> registrar esta usuario:</h2>
 <br/>
       <ul>     
-          <% @usuario.errors.each do |msg| %>
-
-            <li><%= msg[1] %></li>
+          <% @usuario.errors.each do |attribute, errors_array| %>
+ 
+            <li><%= errors_array %></li>
            <% end %>
       </ul>
     </div></center>
