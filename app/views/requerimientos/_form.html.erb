@@ -8,7 +8,7 @@
       <ul>     
           <% @requerimiento.errors.full_messages.each do |msg| %>
  
-            <li><%= msg %></li>
+            <li><%= msg[1] %></li>
            <% end %>
       </ul>
     </div></center>
