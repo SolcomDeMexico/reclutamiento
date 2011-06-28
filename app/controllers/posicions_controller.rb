@@ -7,7 +7,6 @@ class PosicionsController < ApplicationController
   def index
     condicion = AUTOCOMPLETE_CONDITION
     @posicions = Posicion.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posicions }

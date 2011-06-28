@@ -1,4 +1,4 @@
-1309298026
+1309300608
 8	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/actionpack-3.0.6/lib/action_dispatch/http/response.rb	    cattr_accessor(:default_charset) { "utf-8" }
 A	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/json-1.5.3/tests/test_json_addition.rb	  class A
 A1	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rack-1.2.3/lib/rack/auth/digest/md5.rb	        def A1(auth, password)
@@ -1406,6 +1406,8 @@ AuthorizationTest	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/declarative_author
 AuthorizationUsageError	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/declarative_authorization-0.5.3/lib/declarative_authorization/authorization.rb	  class AuthorizationUsageError 
 AuthorizationUsagesController	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/declarative_authorization-0.5.3/app/controllers/authorization_usages_controller.rb	class AuthorizationUsagesController 
 AuthorizationUsagesController	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/declarative_authorization-0.5.3/app/controllers/authorization_usages_controller.rb	class AuthorizationUsagesController 
+AutoComplete	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete.rb	module AutoComplete
+AutoCompleteMacrosHelper	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	module AutoCompleteMacrosHelper
 Autoload	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/activesupport-3.0.6/lib/active_support/dependencies/autoload.rb	  module Autoload
 AutoloadHelper	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/faraday-0.5.7/lib/faraday.rb	  module AutoloadHelper
 AutosaveAssociation	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/activerecord-3.0.6/lib/active_record/autosave_association.rb	  module AutosaveAssociation
@@ -2007,6 +2009,7 @@ Class	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/activesupport-3.0.6/lib/active
 Class	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/aws-s3-0.6.2/lib/aws/s3/extensions.rb	class Class 
 Class	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/json-1.5.3/lib/json/common.rb	class ::Class
 ClassInheritableAttributes	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/activesupport-3.0.6/lib/active_support/core_ext/class/inheritable_attributes.rb	module ClassInheritableAttributes 
+ClassMethods	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete.rb	  module ClassMethods
 ClassMethods	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/actionmailer-3.0.6/lib/action_mailer/delivery_methods.rb	    module ClassMethods
 ClassMethods	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/actionmailer-3.0.6/lib/action_mailer/deprecated_api.rb	    module ClassMethods
 ClassMethods	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/actionmailer-3.0.6/lib/action_mailer/test_case.rb	      module ClassMethods
@@ -5438,6 +5441,10 @@ SolicitudsController	D:/Sites/reclutamiento/app/controllers/solicituds_controlle
 UsuariosController	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	class UsuariosController 
 VacantesController	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	class VacantesController 
 asignar_roles	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	  def asignar_roles
+auto_complete_field	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	  def auto_complete_field(field_id, options = {})
+auto_complete_for	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete.rb	    def auto_complete_for(object, method, options = {})
+auto_complete_result	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	  def auto_complete_result(entries, method, phrase = nil)
+auto_complete_stylesheet	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	    def auto_complete_stylesheet
 cerrar	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def cerrar
 create	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def create
 create	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def create
@@ -5452,6 +5459,7 @@ edit	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def edit
 edit	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def edit
 edit	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	  def edit
 edit	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def edit
+included	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete.rb	  def self.included(base)
 index	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def index
 index	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def index
 index	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def index
@@ -5466,6 +5474,7 @@ show	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def show
 show	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def show
 show	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	  def show
 show	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def show
+text_field_with_auto_complete	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	  def text_field_with_auto_complete(object, method, tag_options = {}, completion_options = {})
 update	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def update
 update	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def update
 update	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def update            
