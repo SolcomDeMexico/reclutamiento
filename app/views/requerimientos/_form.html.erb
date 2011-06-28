@@ -6,9 +6,9 @@
       <h2><%= pluralize(@requerimiento.errors.count, "error no permite", "errores no permiten") %> registrar este requerimiento:</h2>
 <br/>
       <ul>     
-          <% @requerimiento.errors.full_messages.each do |msg| %>
+          <% @requerimiento.errors.each do |attribute, errors_array| %>
  
-            <li><%= msg[1] %></li>
+            <li><%= errors_array %></li>
            <% end %>
       </ul>
     </div></center>
