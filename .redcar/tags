@@ -1,4 +1,4 @@
-1309302962
+1309303377
 8	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/actionpack-3.0.6/lib/action_dispatch/http/response.rb	    cattr_accessor(:default_charset) { "utf-8" }
 A	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/json-1.5.3/tests/test_json_addition.rb	  class A
 A1	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rack-1.2.3/lib/rack/auth/digest/md5.rb	        def A1(auth, password)
@@ -5437,23 +5437,34 @@ SALESFORCE_CONSUMER_KEY	D:/Sites/reclutamiento/config/environments/development.r
 SALESFORCE_CONSUMER_KEY	D:/Sites/reclutamiento/config/environments/production.rb	  SALESFORCE_CONSUMER_KEY =
 SALESFORCE_CONSUMER_SECRET	D:/Sites/reclutamiento/config/environments/development.rb	  SALESFORCE_CONSUMER_SECRET =
 SALESFORCE_CONSUMER_SECRET	D:/Sites/reclutamiento/config/environments/production.rb	  SALESFORCE_CONSUMER_SECRET =
+SesionHelper	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb	module SesionHelper
 SolicitudsController	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	class SolicitudsController 
 UsuariosController	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	class UsuariosController 
 VacantesController	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	class VacantesController 
 asignar_roles	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	  def asignar_roles
+authenticate	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def authenticate
 auto_complete_field	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	  def auto_complete_field(field_id, options = {})
 auto_complete_for	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete.rb	    def auto_complete_for(object, method, options = {})
 auto_complete_result	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	  def auto_complete_result(entries, method, phrase = nil)
 auto_complete_stylesheet	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	    def auto_complete_stylesheet
+calcularHora	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb	    def calcularHora(hora)
+calcularHoraInversa	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb	  def calcularHoraInversa(hora)
+cambiarFecha	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb	  def cambiarFecha(fecha)
 cerrar	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def cerrar
+clear_return_to	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def clear_return_to
 create	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def create
 create	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def create
 create	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def create
 create	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def create
+current_user	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def current_user
+current_user=	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def current_user=(usuario)
+current_user?	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def current_user?(usuario)
+deny_access	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def deny_access
 destroy	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def destroy
 destroy	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def destroy
 destroy	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def destroy
 destroy	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def destroy
+diferenciaHoras	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb	  def diferenciaHoras
 edit	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def edit
 edit	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def edit
 edit	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def edit
@@ -5465,18 +5476,26 @@ index	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def index
 index	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def index
 index	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	  def index
 index	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def index
+meses	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb	  def meses
 new	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def new
 new	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def new
 new	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def new
 new	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def new
+redirect_back_or	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def redirect_back_or(default)
+remember_token	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def remember_token
 show	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def show
 show	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def show
 show	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def show
 show	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	  def show
 show	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def show
+sign_in	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def sign_in(usuario)
+sign_out	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def sign_out
+signed_in?	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def signed_in?
+store_location	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def store_location
 text_field_with_auto_complete	D:/Sites/reclutamiento/vendor/plugins/auto_complete/lib/auto_complete_macros_helper.rb	  def text_field_with_auto_complete(object, method, tag_options = {}, completion_options = {})
 update	D:/Sites/reclutamiento/app/controllers/candidatos_controller.rb	  def update
 update	D:/Sites/reclutamiento/app/controllers/posicions_controller.rb	  def update
 update	D:/Sites/reclutamiento/app/controllers/solicituds_controller.rb	  def update            
 update	D:/Sites/reclutamiento/app/controllers/usuarios_controller.rb	  def update  
 update	D:/Sites/reclutamiento/app/controllers/vacantes_controller.rb	  def update
+user_from_remember_token	D:/Sites/reclutamiento/app/helpers/sesion_helper.rb		def user_from_remember_token

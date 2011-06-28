@@ -57,9 +57,11 @@ module SesionHelper
    dif = (current_user.zona_horaria/3600000) + 1
   end
   
-  def cambiarFecha(fecha)    
-    hora = calcularHoraInversa(fecha.hour)
-    DateTime.new(fecha.year,fecha.month,fecha.day,hora,fecha.min,0,0)
+  def cambiarFecha(fecha)
+    if !fecha.nil?
+      hora = calcularHoraInversa(fecha.hour)
+      DateTime.new(fecha.year,fecha.month,fecha.day,hora,fecha.min,0,0)
+    end
   end
 
   def meses
