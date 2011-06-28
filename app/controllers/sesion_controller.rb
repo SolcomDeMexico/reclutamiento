@@ -8,7 +8,7 @@ before_filter :authenticate, :only => :home
 	end
 	
 	def create
-		access_token = client.web_server.get_access_token(params[:code], :redirect_uri => "https://reclutamientosolcom.heroku.com/oauth/callback", :grant_type => 'authorization_code')
+		access_token = client.web_server.get_access_token(params[:code], :redirect_uri => RECLUTAMIENTO_PATH, :grant_type => 'authorization_code')
 		id = access_token['id'][28,41]
 		user = JSON.parse(access_token.get("#{INSTANCE_URL}#{id}"))
 		user_id = user['user_id']
@@ -38,7 +38,7 @@ before_filter :authenticate, :only => :home
 	def login
 		redirect_to client.web_server.authorize_url(
 		:response_type => 'code',
-		:redirect_uri => "https://reclutamientosolcom.heroku.com/oauth/callback",
+		:redirect_uri => RECLUTAMIENTO_PATH,
 		:parse_json => true
 		)
 	end

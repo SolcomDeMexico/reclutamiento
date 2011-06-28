@@ -1,6 +1,13 @@
 Reclutamiento::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  RECLUTAMIENTO_PATH = "https://reclutamientosolcom.heroku.com/oauth/callback"
+  SALESFORCE_CONSUMER_KEY = "3MVG9Km_cBLhsuPz2R3hJIVrGxOofT2aflzsqXEExhp1hqaOoc2EVVHRrBx5dc6dhg0MZCSEyYRQ7HQk_AVdA"
+  SALESFORCE_CONSUMER_SECRET = "5592815498170171723"
+  AUTOCOMPLETE_CONDITION = 'nombre ILIKE ?'
+  AUTOCOMPLETE_CONDITION_USERS = 'display_name ILIKE ?'
+
+  
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true

@@ -6,7 +6,8 @@ class SolicitudsController < ApplicationController
 	filter_resource_access 
 
   def index
-    @solicituds = Solicitud.find(:all, :conditions => ['nombre ILIKE ?',"%#{params[:search]}%"])
+    condicion = AUTOCOMPLETE_CONDITION
+    @solicituds = Solicitud.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,7 +33,6 @@ class SolicitudsController < ApplicationController
   def new
 	@nuevo = true
   @solicitud = Solicitud.new      
-    @solicituds = Solicitud.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,7 +55,6 @@ class SolicitudsController < ApplicationController
     @solicitud.created_by = current_user.id
     @solicitud.updated_by = current_user.id
     @solicitud.estado = "Nueva solicitud"
-    @solicituds = Solicitud.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
 
     respond_to do |format|
       if @solicitud.save

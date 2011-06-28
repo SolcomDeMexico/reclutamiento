@@ -5,7 +5,8 @@ class VacantesController < ApplicationController
   filter_resource_access 
   
   def index
-	@vacantes = Vacante.find(:all, :conditions => ['nombre ILIKE ?',"%#{params[:search]}%"])
+  condicion = AUTOCOMPLETE_CONDITION
+	@vacantes = Vacante.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
 
     respond_to do |format|
       format.html 

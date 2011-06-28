@@ -4,10 +4,11 @@ class CandidatosController < ApplicationController
   # GET /candidatos.xml
   before_filter :authenticate
   filter_resource_access 
+  
   def index
   
-    #@candidatos = Candidato.all
-		@candidatos = Candidato.find(:all, :conditions => ['nombre ILIKE ?',"%#{params[:term]}%"])
+    condicion = AUTOCOMPLETE_CONDITION
+		@candidatos = Candidato.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
 
 
     respond_to do |format|
@@ -35,8 +36,6 @@ class CandidatosController < ApplicationController
   def new
 	@nuevo = true
   @candidato = Candidato.new
-	#@candidatos = Candidato.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
-
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,18 +53,11 @@ class CandidatosController < ApplicationController
   # POST /candidatos
   # POST /candidatos.xml
   def create
-    logger.debug "error1"
     @id = current_user.id
-    logger.debug "error2"
     @nuevo = true    
-    logger.debug "error3"
     @candidato = Candidato.new(params[:candidato]) 
-    logger.debug "error4"
     @candidato.created_by = current_user.id
-    logger.debug "error5"
     @candidato.updated_by = current_user.id
-    logger.debug "error6"
-	 #@candidatos = Candidato.find(:all, :conditions => ['nombre LIKE ?',"%#{params[:search]}%"])
 
 	
     respond_to do |format|

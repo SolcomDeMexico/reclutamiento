@@ -5,7 +5,8 @@ class PosicionsController < ApplicationController
     filter_resource_access 
   
   def index
-    @posicions = Posicion.find(:all, :conditions => ['nombre ILIKE ?',"%#{params[:search]}%"])
+    condicion = AUTOCOMPLETE_CONDITION
+    @posicions = Posicion.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
 
     respond_to do |format|
       format.html # index.html.erb
