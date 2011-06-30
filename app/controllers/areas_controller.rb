@@ -2,7 +2,8 @@
 class AreasController < ApplicationController
   
     before_filter :authenticate
-    filter_resource_access 
+    filter_resource_access :additional_collection => :autocomplete_usuario_display_name
+    autocomplete :usuario, :display_name, :full => :true    
   
   def index
     @areas = Area.all

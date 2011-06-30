@@ -31,7 +31,7 @@
 <br/>
 <center>
   <% if permitted_to? :create, Vacante.new %>
-<%= link_to 'Agregar Vacante', new_vacante_path(:posicion => @posicion.nombre), :class => "primary button", :align => "left" %>
+<%= link_to 'Agregar Vacante', new_vacante_path(:posicion => @posicion.nombre, :id => @posicion.id), :class => "primary button", :align => "left" %>
 <% end %>
 </center>
 <br/>
@@ -66,7 +66,7 @@
 <br/>
 <center>
   <% if permitted_to? :create, Requerimiento.new %>
-<%= link_to 'Agregar Requerimiento', new_requerimiento_path(:posicion => @posicion.nombre), :class => "primary button", :align => "left" %>
+<%= link_to 'Agregar Requerimiento', new_requerimiento_path(:posicion => @posicion.nombre, :id => @posicion.id), :class => "primary button", :align => "left" %>
 <% end %>
 </center>
 <br/>

@@ -121,6 +121,9 @@ GEM
       activesupport (= 3.0.6)
       bundler (~> 1.0)
       railties (= 3.0.6)
+    rails3-jquery-autocomplete (0.8.0)
+      rails (~> 3.0)
+      yajl-ruby
     railties (3.0.6)
       actionpack (= 3.0.6)
       activesupport (= 3.0.6)
@@ -139,6 +142,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.28)
     xml-simple (1.1.0)
+    yajl-ruby (0.8.2)
 
 PLATFORMS
   x86-mingw32
@@ -154,5 +158,6 @@ DEPENDENCIES
   omniauth (= 0.2.0)
   paperclip
   rails (= 3.0.6)
+  rails3-jquery-autocomplete
   rake
   sqlite3

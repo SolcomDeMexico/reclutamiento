@@ -2,11 +2,11 @@
 class VacantesController < ApplicationController
   include VacantesHelper
   before_filter :authenticate
-  filter_resource_access 
+  filter_resource_access :additional_collection => :autocomplete_posicion_nombre
+  autocomplete :posicion, :nombre, :full => :true
   
   def index
-  condicion = AUTOCOMPLETE_CONDITION
-	@vacantes = Vacante.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
+	@vacantes = Vacante.find(:all)
 
     respond_to do |format|
       format.html 
@@ -53,9 +53,7 @@ class VacantesController < ApplicationController
     @vacante.updated_by = current_user.id
     @vacante.estatus = 'Abierta'
     @vacante.fecha_inicio_reclutamiento = Date.today
-    if @vacante.posicion.nil?
-      @vacante.area_id = Departamento.find(current_user.departamento_id).area.id if @vacante.area_id.nil?
-    else
+    if !@vacante.posicion_id.nil?
       @vacante.area_id = @vacante.posicion.area_id
     end
 
@@ -75,7 +73,7 @@ class VacantesController < ApplicationController
     @vacante = Vacante.find(params[:id])
     @vacante.updated_by = current_user.id
     
-    if @vacante.estatus = 'Cerrada'
+    if @vacante.estatus == 'Cerrada'
       cambiar_estado_solicitudes(@vacante.id,@vacante.usuario_id)
       @vacante.fecha_cierre_reclutamiento = Date.today
     end

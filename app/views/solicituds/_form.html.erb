@@ -27,20 +27,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :candidato %><br />
+    <%= f.label :candidato %><br/>
     <% if params[:candidato] %>
-    <%= text_field_with_auto_complete :solicitud, :candidato_name, {:value => params[:candidato]},{:url => candidatos_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <%= autocomplete_field_tag 'candidato','', autocomplete_candidato_nombre_solicituds_path, :update_elements => {:id => '#solicitud_candidato_id' }, :value => params[:candidato] %>
     <% else %>
-    <%= text_field_with_auto_complete :solicitud, :candidato_name, {},{:url => candidatos_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <%= autocomplete_field_tag 'candidato','', autocomplete_candidato_nombre_solicituds_path, :update_elements => {:id => '#solicitud_candidato_id' } %>
     <% end %>
+    <%= f.hidden_field :candidato_id, :value => params[:id] %>
   </div>
   <div class="field">
-    <%= f.label :vacante %><br />
+    <%= f.label :vacante %><br/>
     <% if params[:vacante] %>
-    <%= text_field_with_auto_complete :solicitud, :vacante_name, {:value => params[:vacante]},{:url => vacantes_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <%= autocomplete_field_tag 'vacante','', autocomplete_vacante_nombre_solicituds_path, :update_elements => {:id => '#solicitud_vacante_id' }, :value => params[:vacante] %>
     <% else %>
-        <%= text_field_with_auto_complete :solicitud, :vacante_name, {},{:url => vacantes_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <%= autocomplete_field_tag 'vacante','', autocomplete_vacante_nombre_solicituds_path, :update_elements => {:id => '#solicitud_vacante_id' } %>
     <% end %>
+    <%= f.hidden_field :vacante_id, :value => params[:id] %>
   </div>    
   <%= render 'botones_forma'%>  
 <% end %>

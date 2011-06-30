@@ -28,7 +28,8 @@
   </div>
   <div class="field">
     <%= f.label :gerente %><br />	
-    <%= text_field_with_auto_complete :area,:gerente_name,{}, {:url => usuarios_path(:format => :js), :method => :get, :param_name => 'search' }	%>
+    <%= autocomplete_field_tag 'gerente','', autocomplete_usuario_display_name_areas_path, :update_elements => {:id => '#area_usuario_id' } %>
+    <%= f.hidden_field :usuario_id %>
   </div>
 
   <%= render 'botones_forma'%>  

@@ -13,7 +13,11 @@ authorization do
     de todos los objetos del sistema. No puede crear nada ni ver el detalle de ningún registro.
     La unica información que puede editar es su propia información de usuario y algunos campos
     de una entrevista si es el entrevistador."
-    
+    has_permission_on :entrevista, :to => [:autocomplete_solicitud_nombre,:autocomplete_usuario_display_name]
+    has_permission_on :solicituds, :to => [:autocomplete_vacante_nombre,:autocomplete_candidato_nombre]
+    has_permission_on :vacantes, :to => :autocomplete_posicion_nombre
+    has_permission_on :requerimientos, :to => :autocomplete_posicion_nombre
+    has_permission_on [:departamentos,:areas], :to => :autocomplete_usuario_display_name
     has_permission_on [:vacantes,:requerimientos,:candidatos,
                       :solicituds,:posicions], :to => :index                      
     has_permission_on :usuarios, :to => [:index, :show]

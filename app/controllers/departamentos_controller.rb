@@ -1,8 +1,9 @@
 # encoding: UTF-8
 class DepartamentosController < ApplicationController
   
-    before_filter :authenticate
-    filter_resource_access 
+  before_filter :authenticate
+  filter_resource_access :additional_collection => :autocomplete_usuario_display_name
+  autocomplete :usuario, :display_name, :full => :true
   
 
   def show

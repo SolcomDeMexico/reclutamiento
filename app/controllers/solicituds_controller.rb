@@ -3,11 +3,12 @@ class SolicitudsController < ApplicationController
   # GET /solicituds
   # GET /solicituds.xml
  before_filter :authenticate
-	filter_resource_access 
+	filter_resource_access :additional_collection => [:autocomplete_candidato_nombre, :autocomplete_vacante_nombre]
+  autocomplete :candidato, :nombre, :full => :true 
+  autocomplete :vacante, :nombre, :full => :true
 
-  def index
-    condicion = AUTOCOMPLETE_CONDITION
-    @solicituds = Solicitud.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
+  def index    
+    @solicituds = Solicitud.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb

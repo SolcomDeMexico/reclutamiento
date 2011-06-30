@@ -24,8 +24,9 @@
     <%= f.hidden_field :area_id, :value => params[:area] %>
   </div>
   <div class="field">
-    <%= f.label :jefe %><br />	
-    <%= text_field_with_auto_complete :departamento,:jefe_name,{}, {:url => usuarios_path(:format => :js), :method => :get, :param_name => 'search' }	%>
+    <%= f.label :jefe %><br />
+    <%= autocomplete_field_tag 'jefe','', autocomplete_usuario_display_name_departamentos_path, :update_elements => {:id => '#departamento_usuario_id' } %>
+    <%= f.hidden_field :usuario_id %>
   </div>
 
   <%= render 'botones_forma'%>  

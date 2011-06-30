@@ -3,7 +3,10 @@ class EntrevistaController < ApplicationController
   # GET /entrevista
   # GET /entrevista.xml
   before_filter :authenticate
-  filter_resource_access 
+  filter_resource_access :additional_collection => [:autocomplete_solicitud_nombre,:autocomplete_usuario_display_name]
+  autocomplete :solicitud, :nombre, :full => :true
+  autocomplete :usuario, :display_name, :full => :true
+  
   def index
     @entrevista = Entrevistum.all
 

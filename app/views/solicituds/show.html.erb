@@ -30,12 +30,12 @@
 <%= render 'botones_show'%>
 <br/>
 <div class="relaciones">
-<hr />
+<hr/>
 </div>
 <br/>
 <center>
 <% if permitted_to? :create, Entrevistum.new %>
-<%= link_to 'Agregar Entrevista', new_entrevistum_path(:solicitud => @solicitud.nombre), :class => "primary button", :align => "left" %>
+<%= link_to 'Agregar Entrevista', new_entrevistum_path(:solicitud => @solicitud.nombre, :id => @solicitud.id), :class => "primary button", :align => "left" %>
 <% end %></center>
 <br/>
 <b>Entrevistas agendadas para esta solicitud</b>

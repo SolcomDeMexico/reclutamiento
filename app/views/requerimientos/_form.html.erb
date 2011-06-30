@@ -26,10 +26,11 @@
   <div class="field">
     <%= f.label :posicion %><br />
     <% if params[:posicion] %>
-    <%= text_field_with_auto_complete :requerimiento, :posicion_name, {:value => params[:posicion]},{:url => posicions_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <%= autocomplete_field_tag 'posicion','', autocomplete_posicion_nombre_requerimientos_path, :update_elements => {:id => '#requerimiento_posicion_id' }, :value => params[:posicion] %>
     <% else %>
-    <%= text_field_with_auto_complete :requerimiento, :posicion_name, {},{:url => posicions_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
-    <% end %>
+    <%= autocomplete_field_tag 'posicion','', autocomplete_posicion_nombre_requerimientos_path, :update_elements => {:id => '#requerimiento_posicion_id' } %>
+    <% end%>
+    <%= f.hidden_field :posicion_id , :value => params[:id]%>
   </div>
   <div class="field">
     <%= f.label :Fecha_de_contratación_deseada %><br />

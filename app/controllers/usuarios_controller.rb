@@ -5,8 +5,7 @@ class UsuariosController < ApplicationController
   filter_resource_access 
   
   def index
-    condicion = AUTOCOMPLETE_CONDITION_USERS
-    @usuarios = Usuario.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
+    @usuarios = Usuario.find(:all)
     
     respond_to do |format|
       format.html 

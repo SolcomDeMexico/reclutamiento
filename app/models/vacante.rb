@@ -20,6 +20,8 @@ class Vacante < ActiveRecord::Base
   validates_numericality_of :pago_minimo , :message => "El pago mínimo de la vacante debe ser un valor numérico."
   validates_numericality_of :pago_maximo , :message => "El pago máximo de la vacante debe ser un valor numérico."
   validates_presence_of :tipo , :message => "El tipo de la vacante es requerido."
+  validates_presence_of :posicion_id, :message => "La posición de la vacante es requerido"
+  validates_associated :posicion, :message => "La posición de la vacante debe ser una posición válida"
   
    def posicion_name
 		posicion.nombre if posicion

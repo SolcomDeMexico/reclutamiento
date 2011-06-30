@@ -1,11 +1,25 @@
 Reclutamiento::Application.routes.draw do
-  resources :entrevista
-  resources :solicituds
+  resources :entrevista do
+    get :autocomplete_solicitud_nombre, :on => :collection
+    get :autocomplete_usuario_display_name, :on => :collection
+  end
+  resources :solicituds do
+    get :autocomplete_vacante_nombre, :on => :collection
+    get :autocomplete_candidato_nombre, :on => :collection
+  end
   resources :candidatos
-  resources :vacantes
-  resources :requerimientos  
-  resources :departamentos
-  resources :areas
+  resources :vacantes do
+    get :autocomplete_posicion_nombre, :on => :collection
+  end
+  resources :requerimientos do
+    get :autocomplete_posicion_nombre, :on => :collection
+  end
+  resources :departamentos do
+    get :autocomplete_usuario_display_name, :on => :collection
+  end
+  resources :areas do
+    get :autocomplete_usuario_display_name, :on => :collection
+  end
   resources :posicions
   
   

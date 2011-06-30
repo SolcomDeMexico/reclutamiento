@@ -6,9 +6,8 @@ class CandidatosController < ApplicationController
   filter_resource_access 
   
   def index
-  
-    condicion = AUTOCOMPLETE_CONDITION
-		@candidatos = Candidato.find(:all, :conditions => [condicion,"%#{params[:search]}%"])
+      
+		@candidatos = Candidato.find(:all)
 
 
     respond_to do |format|

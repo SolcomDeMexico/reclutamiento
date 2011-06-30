@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class RequerimientosController < ApplicationController  
   include RequerimientosHelper
-  before_filter :authenticate
-  filter_resource_access 
+  filter_resource_access :additional_collection => :autocomplete_posicion_nombre
+  autocomplete :posicion, :nombre, :full => :true
   
   def index    
     @requerimientos = Requerimiento.find(:all)
@@ -107,6 +107,16 @@ class RequerimientosController < ApplicationController
 
   def convertir_vacante
     requerimiento = Requerimiento.find(params[:id])
+    pos = requerimiento.posicion_id
+    if requerimiento.posicion_id.nil?
+      posicion = Posicion.new()
+      posicion.nombre = requerimiento.nombre
+      posicion.created_by = current_user.id
+      posicion.updated_by = current_user.id
+      posicion.area_id = requerimiento.area_id
+      posicion.save!
+      pos = posicion.id
+    end
     vacante = Vacante.new()
     vacante.nombre = requerimiento.nombre
     vacante.tipo = requerimiento.tipo
@@ -125,7 +135,7 @@ class RequerimientosController < ApplicationController
     vacante.updated_by = current_user.id
     vacante.area_id = requerimiento.area_id
     vacante.estatus = 'Abierta'
-    vacante.posicion_id = requerimiento.posicion_id
+    vacante.posicion_id = pos 
     vacante.save!
     redirect_to(vacante, :notice => 'La vacante fue creada exitosamente')
 

@@ -22,10 +22,11 @@
   <div class="field">
     <%= f.label :solicitud %><br />	
     <% if params[:solicitud] %>
-  	<%= text_field_with_auto_complete :entrevistum, :solicitud_name, {:value => params[:solicitud], :size => 65  },{:url => solicituds_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <%= autocomplete_field_tag 'solicitud','', autocomplete_solicitud_nombre_entrevista_path, :update_elements => {:id => '#entrevistum_solicitud_id' }, :value => params[:solicitud], :size => 65 %>
     <% else %>
-    <%= text_field_with_auto_complete :entrevistum, :solicitud_name, {:size => 65  },{:url => solicituds_path(:format => :js), :method => :get, :param_name => 'search' }	 %>
+    <%= autocomplete_field_tag 'solicitud','', autocomplete_solicitud_nombre_entrevista_path, :update_elements => {:id => '#entrevistum_solicitud_id' }, :size => 65 %>
     <% end%>
+    <%= f.hidden_field :solicitud_id , :value => params[:id]%>
   </div>
   <div class="field">
     <%= f.label :fecha %><br />
@@ -34,7 +35,8 @@
   </div>
   <div class="field">
     <%= f.label :entrevistador%><br/>
-    <%= text_field_with_auto_complete :entrevistum,:entrevistador_name,{}, {:url => usuarios_path(:format => :js), :method => :get, :param_name => 'search' }	%>
+    <%= autocomplete_field_tag 'entrevistador','', autocomplete_usuario_display_name_entrevista_path, :update_elements => {:id => '#entrevistum_usuario_id' } %>
+    <%= f.hidden_field :usuario_id %>
   </div>
   <div class="field">
     <%= f.label :ubicación %>  <br/>

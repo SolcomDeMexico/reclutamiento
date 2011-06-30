@@ -109,7 +109,7 @@
 <br/>
 <center>
   <% if permitted_to? :create, Solicitud.new %>
-<%= link_to 'Agregar Solicitud', new_solicitud_path(:vacante => @vacante.nombre), :class => "primary button", :align => "left" %>
+<%= link_to 'Agregar Solicitud', new_solicitud_path(:vacante => @vacante.nombre, :id => @vacante.id), :class => "primary button", :align => "left" %>
 <% end %>
 </center>
 <br/>
