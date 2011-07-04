@@ -37,14 +37,8 @@
 </p>
 
 <p>
-  <b>Perfil:</b>
-  <%= @usuario.role %>
-</p>
-
-
-<p>
   <b>Rol:</b>
-  <%= @usuario.perfil %>
+  <%= @usuario.role.to_s.humanize %>
 </p>
 
 <p>

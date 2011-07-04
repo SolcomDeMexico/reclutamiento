@@ -19,7 +19,7 @@ before_filter :authenticate, :only => :home
 		nombre = user['display_name'] 
     horario = user['utcOffset']
 		usuario = Usuario.new(:user_id => user_id, :email => email, :picture => picture, :display_name => nombre, 
-                          :zona_horaria => horario, :role => "empleado", :perfil => "Ninguno") 
+                          :zona_horaria => horario, :role => "empleado") 
 		usuario.save
     usuario.updated_by = usuario.id
     

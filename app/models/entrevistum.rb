@@ -2,6 +2,8 @@
 class Entrevistum < ActiveRecord::Base 
   include SesionHelper  
 	belongs_to :solicitud
+  has_one :vacante, :through => :solicitud
+  has_one :area, :through => :vacante
   belongs_to :usuario      
 
   

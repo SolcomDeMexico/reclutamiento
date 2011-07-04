@@ -3,9 +3,7 @@ Reclutamiento::Application.configure do
   
   RECLUTAMIENTO_PATH = "https://localhost:3000/oauth/callback"
   SALESFORCE_CONSUMER_KEY = "3MVG9Km_cBLhsuPz2R3hJIVrGxPU23iLJ_Ze8DhLpTHx1nI13Z5byI8Xz.2GIwxeCS5ynV.C1i3sGstJpThqb"
-  SALESFORCE_CONSUMER_SECRET = "226985717960619205"
-  AUTOCOMPLETE_CONDITION = 'nombre LIKE ?'
-  AUTOCOMPLETE_CONDITION_USERS = 'display_name LIKE ?'
+  SALESFORCE_CONSUMER_SECRET = "226985717960619205"  
   
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development

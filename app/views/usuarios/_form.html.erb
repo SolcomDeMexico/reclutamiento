@@ -31,12 +31,9 @@
 </div>
 <% if permitted_to? :asignar_roles,@usuario%>
   <div class="field">
-    <%= f.label :perfil %><br/>
+    <%= f.label :rol %><br/>
     <%= f.collection_select(:role, Usuario::ROLES, :to_s , :humanize)%>  
-  </div>
-  <div class="field">
-    <%= label_tag :rol %><br/>
-    <%= f.select(:perfil,["Ninguno","Monterrey","D.F."])%>
+  </div>  
 <% end %>
   <div class="field">
     <%= f.label :foto%><br/>

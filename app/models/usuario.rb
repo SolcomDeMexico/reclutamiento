@@ -11,12 +11,14 @@ class Usuario < ActiveRecord::Base
   #validates_associated :departamento , :message => "El departamento del usuario debe ser un departamento válido."
   before_save :save_salt  
   has_many :entrevista
+  has_one :departamento
+  has_one :area, :through => :departamento
   #has_many :rol_asignacions
   #has_many :roles, :through => :rol_asignacions  
   
   #Definition of Roles
-  ROLES = %w[administrador empleado gerente_rh jefe_departamento gerente_area gerente_general]
-  PERFILES = "<option>Ninguno</option><option>Monterrey</option><option>D.F.</option>"
+  ROLES = %w[empleado jefe_de_departamento gerente_de_area gerente_de_relaciones_humanas gerente_de_relaciones_humanas_MTY gerente_de_relaciones_humanas_DF 
+     gerente_general administrador]
   
   has_attached_file :foto,
       :storage => 's3',
