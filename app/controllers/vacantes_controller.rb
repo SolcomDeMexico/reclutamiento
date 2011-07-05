@@ -29,6 +29,7 @@ class VacantesController < ApplicationController
   
   def cerrar
     @vacante = Vacante.find(params[:id])
+    action("cerrar")
   end
   
   def new
@@ -73,13 +74,12 @@ class VacantesController < ApplicationController
     @vacante = Vacante.find(params[:id])
     @vacante.updated_by = current_user.id
     
-    if @vacante.estatus == 'Cerrada'
-      cambiar_estado_solicitudes(@vacante.id,@vacante.usuario_id)
-      @vacante.fecha_cierre_reclutamiento = Date.today
-    end
       
     respond_to do |format|
       if @vacante.update_attributes(params[:vacante])
+        if @vacante.estatus == 'Cerrada'
+          cambiar_estado_solicitudes(@vacante.id,@vacante.usuario_id)
+        end
         format.html { redirect_to(@vacante, :notice => 'La vacante fue actualizada exitosamente.') }
         format.xml  { head :ok }
       else

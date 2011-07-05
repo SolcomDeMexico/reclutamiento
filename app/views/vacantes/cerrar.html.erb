@@ -6,12 +6,14 @@
 <p>
   <b>Nombre:</b>
   <%= @vacante.nombre %>
+    <%= @vacante.posicion_id %>
 </p>
 <%= form_for(@vacante, :html => { :id => "forma_vacante" })  do |f| %>
 <div class="field">
   <%= f.label :candidato_contratado %><br />
   <%= f.collection_select(:usuario_id, @vacante.candidatos, :id , :nombre, options = {:prompt => "Ningún candidato fue contratado"})  %>
   <%= f.hidden_field :estatus, :value => 'Cerrada' %>
+  <%= f.hidden_field :fecha_cierre_reclutamiento, :value => Date.today %>
 </div>
 
 

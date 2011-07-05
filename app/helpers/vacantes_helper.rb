@@ -1,14 +1,18 @@
 module VacantesHelper
+  
   def cambiar_estado_solicitudes(vacante,candidato)
     solicitudes = Solicitud.find(:all, :conditions => ["vacante_id = ?",vacante])
     solicitudes.each do |sol|
-      sol.estado = 'Rechazado'
+      sol.update_attributes(:estado => 'Rechazado')
       sol.save!
     end
     if !candidato.nil?
-      solicitud = Solicitud.find(:first, :conditions => ["candidato_id = ? and vacante_id = ?",candidato,vacante])
-      solicitud.estado = 'Contratado'
-      solicitud.save!
+      solicitudes2 = Solicitud.find(:all, :conditions => ["candidato_id = ? and vacante_id = ?",candidato,vacante])
+      solicitudes2.each do |solicitud|
+        solicitud.update_attributes(:estado => 'Contratado')
+        solicitud.save!
+      end
     end
   end
+    
 end

@@ -7,7 +7,7 @@ class Solicitud < ActiveRecord::Base
 	validates_presence_of :vacante, :message => "El campo vacante es requerido."
   validates_presence_of :candidato, :message => "El campo candidato es requerido."
 	validates_associated :vacante, :message => "Debes ingresar una vacante existente."
-  validates_associated :candidato, :message => "Debes ingresar un candidato existente."
+  #validates_associated :candidato, :message => "Debes ingresar un candidato existente."
   before_save :agrega_nombre
   
 	
