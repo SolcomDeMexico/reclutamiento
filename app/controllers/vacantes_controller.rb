@@ -28,8 +28,7 @@ class VacantesController < ApplicationController
   end
   
   def cerrar
-    @vacante = Vacante.find(params[:id])
-    action("cerrar")
+    @vacante = Vacante.find(params[:id])    
   end
   
   def new
