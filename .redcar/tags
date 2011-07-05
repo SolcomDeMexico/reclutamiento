@@ -1,4 +1,4 @@
-1309885536
+1309886391
 8	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/actionpack-3.0.6/lib/action_dispatch/http/response.rb	    cattr_accessor(:default_charset) { "utf-8" }
 A	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/json-1.5.3/tests/test_json_addition.rb	  class A
 A1	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rack-1.2.3/lib/rack/auth/digest/md5.rb	        def A1(auth, password)
@@ -2162,6 +2162,7 @@ Column	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/activerecord-3.0.6/lib/active
 Column	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/arel-2.0.10/test/support/fake_record.rb	  class Column 
 ColumnDefinition	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/activerecord-3.0.6/lib/active_record/connection_adapters/abstract/schema_definitions.rb	    class ColumnDefinition 
 ColumnType	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/sqlite3-1.3.3-x86-mingw32/lib/sqlite3/constants.rb	  module ColumnType
+ColumnaTelefonosCelulares	D:/Sites/reclutamiento/db/migrate/20110705171706_columna_telefonos_celulares.rb	class ColumnaTelefonosCelulares 
 CommandLine	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/paperclip-2.3.11/lib/paperclip/command_line.rb	  class CommandLine
 CommandLineTest	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/paperclip-2.3.11/test/command_line_test.rb	class CommandLineTest 
 CommandNotFoundError	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/paperclip-2.3.11/lib/paperclip.rb	  class CommandNotFoundError 
@@ -5662,6 +5663,7 @@ display_name	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocompl
 display_name	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/test/support/active_record.rb	          def display_name
 display_name	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/test/support/mongo_mapper.rb	          def display_name
 display_name	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/test/support/mongoid.rb	          def display_name
+down	D:/Sites/reclutamiento/db/migrate/20110705171706_columna_telefonos_celulares.rb	  def self.down
 down	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/integration/db/migrate/20101209014338_create_brands.rb	  def self.down
 down	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/integration/db/migrate/20101209014355_create_products.rb	  def self.down
 down	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/integration/db/migrate/20101209053936_add_type_to_brand.rb	  def self.down
@@ -5841,6 +5843,7 @@ text_field_with_auto_complete	D:/Sites/reclutamiento/vendor/plugins/auto_complet
 title	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/integration/app/helpers/layout_helper.rb	  def title(page_title, show_title = true)
 to_json	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/yajl-ruby-0.8.2/lib/yajl/json_gem/encoding.rb	    def to_json(*args, &block)
 to_json	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/yajl-ruby-0.8.2/spec/encoding/encoding_spec.rb	  def to_json
+up	D:/Sites/reclutamiento/db/migrate/20110705171706_columna_telefonos_celulares.rb	  def self.up
 up	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/integration/db/migrate/20101209014338_create_brands.rb	  def self.up
 up	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/integration/db/migrate/20101209014355_create_products.rb	  def self.up
 up	D:/Sites/reclutamiento/vendor/ruby/1.8/gems/rails3-jquery-autocomplete-0.8.0/integration/db/migrate/20101209053936_add_type_to_brand.rb	  def self.up
