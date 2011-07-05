@@ -2,7 +2,7 @@
 <% if permitted_to? :edit , @entrevistum%>
 <%= link_to 'Editar', edit_entrevistum_path(@entrevistum), :class => "primary button"%> 
 <% end %>
-<% if permitted_to? :calificar , @entrevistum%>
+<% if permitted_to? :calificar , @entrevistum and @entrevistum.calificacion == nil %>
 <%= link_to 'Calificar', {:controller => :entrevista, :action => "calificar", :id => @entrevistum}, :class => "primary button"%> 
 <% end %>
 <% if permitted_to? :cancelar , @entrevistum%>

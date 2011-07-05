@@ -2,6 +2,7 @@
 class EntrevistaController < ApplicationController
   # GET /entrevista
   # GET /entrevista.xml
+  include EntrevistaHelper
   before_filter :authenticate
   filter_resource_access :additional_collection => [:autocomplete_solicitud_nombre,:autocomplete_usuario_display_name]
   autocomplete :solicitud, :nombre, :full => :true
@@ -50,15 +51,14 @@ class EntrevistaController < ApplicationController
   
   def cancelar
     @entrevistum = Entrevistum.find(params[:id])
-    @entrevistum.update_attributes(:estatus => 'Cancelada')
-    @entrevistum.updated_by = current_user.id
+    @entrevistum.update_attributes(:estatus => 'Cancelada', :updated_by => current_user.id)
     @entrevistum.save!
     redirect_to(entrevista_path, :notice => 'La entrevista fue cancelada exitosamente.') 
 
   end
   
   def calificar
-    @entrevistum = Entrevistum.find(params[:id])
+    @entrevistum = Entrevistum.find(params[:id])    
   end
   # POST /entrevista
   # POST /entrevista.xml
@@ -88,19 +88,24 @@ class EntrevistaController < ApplicationController
   # PUT /entrevista/1.xml
   def update
     @entrevistum = Entrevistum.find(params[:id])
-    @entrevistum.updated_by = current_user.id
+    @entrevistum.updated_by = current_user.id    
         
     if !params[:entrevistum][:calificacion].nil?
       @entrevistum.estatus = 'Realizada'
     end
-
+    
     respond_to do |format|
       if @entrevistum.update_attributes(params[:entrevistum])
         format.html { redirect_to(@entrevistum, :notice => 'La entrevista fue actualizada exitosamente.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @entrevistum.errors, :status => :unprocessable_entity }
+        if params[:status] == 'calificar'
+          logger.debug "ALGO"
+          format.html { render :action => "calificar" }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @entrevistum.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

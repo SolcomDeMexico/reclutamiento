@@ -3,15 +3,31 @@
 <%= link_to_function "Calificar", "document.getElementById('forma_entrevista').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary button' %>
 <%= link_to "Cancelar", @entrevistum , :class => "primary button"%></center>
 <br/>
+<% if @entrevistum.errors.any? %><br/><center>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entrevistum.errors.count, "error no permite", "errores no permiten") %> registrar esta calificación:</h2>
+	<br/>
+      <ul>     
+          <% @entrevistum.errors.each do |attribute, errors_array| %>
+ 
+            <li><%= errors_array %></li>
+
+          <% end %>
+
+      </ul>
+    </div></center>
+  <% end %>
+
 <%= form_for(@entrevistum, :html => { :id => "forma_entrevista" })  do |f| %>
 
 <div class="field">
     <%= f.label :calificación %><br/>
-    <%= f.number_field :calificacion , :min => 0, :max => 10%>
+    <%= f.number_field :calificacion , :min => 0, :max => 10 %>
   </div>
   <div class="field">
     <%= f.label :comentarios %><br />
     <%= f.text_area :comentarios %>
-  </div>
+  </div>  
+  <%= hidden_field_tag 'status', 'calificar' %>
   
 <% end %>

@@ -1,3 +1,3 @@
 module EntrevistaHelper
-  
+
 end
