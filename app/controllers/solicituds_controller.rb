@@ -5,7 +5,7 @@ class SolicitudsController < ApplicationController
  before_filter :authenticate
 	filter_resource_access :additional_collection => [:autocomplete_candidato_nombre, :autocomplete_vacante_nombre]
   autocomplete :candidato, :nombre, :full => :true 
-  autocomplete :vacante, :nombre, :full => :true
+  autocomplete :vacante, :nombre, :full => :true, :scopes => :no_cerradas
 
   def index    
     @solicituds = Solicitud.find(:all)

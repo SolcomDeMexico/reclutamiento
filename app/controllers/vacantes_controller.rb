@@ -20,7 +20,10 @@ class VacantesController < ApplicationController
     @vacante = Vacante.find(params[:id])
   	@usuario_crea = Usuario.find(@vacante.created_by)
   	@usuario_actualiza = Usuario.find(@vacante.updated_by)
-
+    
+    if !@vacante.usuario_id.nil?
+      @contratado =  Usuario.find(@vacante.usuario_id)
+    end
     respond_to do |format|
       format.html 
       format.xml  { render :xml => @vacante }

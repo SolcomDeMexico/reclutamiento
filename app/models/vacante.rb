@@ -1,11 +1,15 @@
 # encoding: UTF-8
 class Vacante < ActiveRecord::Base
+  scope :no_cerradas,where("estatus != ?",'Cerrada')
   has_many :solicituds, :dependent => :destroy
 	#has_many :entrevistum, :through => :solicitud
   has_many :candidatos, :through => :solicituds
   belongs_to :area
   belongs_to :requerimiento
   belongs_to :posicion
+  
+  
+
   
   validates_presence_of :nombre, :message => "El nombre de la vacante es requerido."
   validates_presence_of :area_id, :message => "El área que solicita la vacante es requerida."

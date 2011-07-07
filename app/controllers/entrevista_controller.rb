@@ -5,7 +5,7 @@ class EntrevistaController < ApplicationController
   include EntrevistaHelper
   before_filter :authenticate
   filter_resource_access :additional_collection => [:autocomplete_solicitud_nombre,:autocomplete_usuario_display_name]
-  autocomplete :solicitud, :nombre, :full => :true
+  autocomplete :solicitud, :nombre, :full => :true, :scopes => :nuevas
   autocomplete :usuario, :display_name, :full => :true
   
   def index

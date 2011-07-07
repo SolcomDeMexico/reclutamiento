@@ -89,6 +89,16 @@
   <%= @vacante.estatus %>
 </p>
 
+<% if @vacante.estatus == 'Cerrada'%>
+<p>
+<% if @vacante.usuario_id.nil? %>
+  <b>Candidato Contratado:</b> No se contrató a nadie.
+  <% else %>
+   <b>Candidato Contratado:</b>
+  <%= link_to @contratado.display_name, @contratado %>
+  <% end %>
+</p>  
+<% end %>
 <hr/>
 <h5>Información del sistema</h5>
 <p>

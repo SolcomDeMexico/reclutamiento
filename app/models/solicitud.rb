@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class Solicitud < ActiveRecord::Base
+  scope :nuevas,where("estado = ?",'Nueva solicitud')
 	belongs_to :vacante
 	belongs_to :candidato
   has_one :area, :through => :vacante
