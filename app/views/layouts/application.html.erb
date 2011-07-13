@@ -3,24 +3,29 @@
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <title><%= @title %></title>
-  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
-	<%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
-  <%= stylesheet_link_tag 'custom', :media => 'screen' %>
-  <%= stylesheet_link_tag 'css3buttons', :media => 'screen' %>
-  <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.14.custom', :media => 'screen' %>
   <%= javascript_include_tag ['jquery-1.6.1.min','jquery-ui-1.8.14.custom.min','jquery.ui.core.min',
     'jquery.ui.position.min','jquery.ui.widget.min','jquery.ui.autocomplete.min','autocomplete-rails',
     'rails','application']%>
+
+  <%= stylesheet_link_tag "http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css", :media => 'screen' %>
+
+  <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>  
+  <script src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+
   <%= csrf_meta_tag %>
     
 </head>
 <body>
-    <div class="container">
-		<%= render 'layouts/header' %>
-		<section class="round">
+      <div data-role="page">
+     <!-- <div class="container">
+     <%= render 'layouts/header' %> 
+    
+		<section class="round"> -->
 			<%= yield %>
-		</section>
-		<%= render 'layouts/footer' %>
-    </div>
+		<!--  </section>
+  </div>
+		<%= render 'layouts/footer' %> 
+    </div> -->
+  </div>
 </body>
 </html>

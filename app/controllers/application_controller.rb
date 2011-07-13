@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
     flash[:notice] = "Lo sentimos, no cuenta con el permiso necesario para acceder a esa página."
     redirect_to home_path
   end
+  
+  def authorize
+    unless ENV['sfdc_token']
+      redirect_to :controller => 'sesion', :action => 'authenticate'
+    end
+  end
 end

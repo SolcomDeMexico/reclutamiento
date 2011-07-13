@@ -1,15 +1,25 @@
+<div data-role="header">
+<h1>Menú</h1>
+<%= link_to 'Logout', logout_path, "data-icon" => "minus", "class" => "ui-btn-right"%>
+</div>
+
+<div data-role="content">
 <% if flash[:warning] or flash[:notice] %>
 <center><p id="error_explanation"><%= notice %></p></center>
 <% end %>
-<table>
-  <tr>
-    <td class="main">
-		<center>
-		<p>Bienvenido <b><%= 	current_user.display_name	=%></b> a la aplicación de reclutamiento de SOLCOM. <br/>
-		Ya te encuentras identificado como usuario de SOLCOM. </p></center>
-		<p></p>
-	</td>
-  </tr>
- </table>
+<center><p>Bienvenido <b><%= 	current_user.display_name	=%></b> a la aplicación de reclutamiento de SOLCOM. <br/>
+  Ya te encuentras identificado como usuario de SOLCOM.</center><br/>
+<ul data-role="listview">
+<li><%= link_to 'Mi Perfil', usuario_path(current_user) %></li>
+<li><%= link_to 'Empleados', usuarios_path %></li>
+<li><%= link_to 'Requerimientos', requerimientos_path %></li>
+<li><%= link_to 'Vacantes', vacantes_path %></li>
+<li><%= link_to 'Posiciones', posicions_path %></li>
+<li><%= link_to 'Candidatos', candidatos_path %></li>
+<li><%= link_to 'Solicitudes', solicituds_path %></li>
+<li><%= link_to 'Entrevistas', entrevista_path %></li>
+<li><%= link_to 'Áreas', areas_path %></li>
+</ul>
+</div>
  
     

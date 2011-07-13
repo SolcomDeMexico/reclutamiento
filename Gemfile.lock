@@ -37,6 +37,7 @@ GEM
       mime-types
       xml-simple
     builder (2.1.2)
+    cocaine (0.1.0)
     crack (0.1.8)
     custom_error_message (1.0.0)
     date_validator (0.6.2)
@@ -61,7 +62,7 @@ GEM
     multi_json (0.0.5)
     multipart-post (1.1.2)
     net-ldap (0.1.1)
-    nokogiri (1.4.6-x86-mingw32)
+    nokogiri (1.4.7-x86-mingw32)
     oa-basic (0.2.0)
       multi_json (~> 0.0.2)
       nokogiri (~> 1.4.2)
@@ -100,9 +101,11 @@ GEM
       oa-more (= 0.2.0)
       oa-oauth (= 0.2.0)
       oa-openid (= 0.2.0)
-    paperclip (2.3.11)
+    paperclip (2.3.15)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.3)
     rack (1.2.3)
@@ -121,9 +124,8 @@ GEM
       activesupport (= 3.0.6)
       bundler (~> 1.0)
       railties (= 3.0.6)
-    rails3-jquery-autocomplete (0.8.0)
+    rails3-jquery-autocomplete (0.9.0)
       rails (~> 3.0)
-      yajl-ruby
     railties (3.0.6)
       actionpack (= 3.0.6)
       activesupport (= 3.0.6)
@@ -140,9 +142,8 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.28)
+    tzinfo (0.3.29)
     xml-simple (1.1.0)
-    yajl-ruby (0.8.2)
 
 PLATFORMS
   x86-mingw32

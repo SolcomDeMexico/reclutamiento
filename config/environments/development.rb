@@ -1,9 +1,9 @@
 Reclutamiento::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   
-  RECLUTAMIENTO_PATH = "https://localhost:3000/oauth/callback"
-  SALESFORCE_CONSUMER_KEY = "3MVG9Km_cBLhsuPz2R3hJIVrGxPU23iLJ_Ze8DhLpTHx1nI13Z5byI8Xz.2GIwxeCS5ynV.C1i3sGstJpThqb"
-  SALESFORCE_CONSUMER_SECRET = "226985717960619205"  
+  RECLUTAMIENTO_PATH = "https://localhost:3000"
+  SALESFORCE_CONSUMER_KEY = "3MVG9Km_cBLhsuPz2R3hJIVrGxOxowc_iAz01rNgZBv3Q154UsxGyxkszKIs9lpZc4U7_.asmItUEw2dCqmo6"
+  SALESFORCE_CONSUMER_SECRET = "3638691110882490053"  
   
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development

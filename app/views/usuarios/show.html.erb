@@ -1,3 +1,7 @@
+<div data-role="header">
+  <h1>Perfil del Usuario</h1>
+</div>
+<div data-role="content">
 <center><p id="notice"><%= notice %></p></center>
 
 <h3>Detalles del usuario</h3>
@@ -58,3 +62,4 @@
   <b>Actualizado por:</b>
   <%= link_to @usuario_actualiza.display_name , @usuario_actualiza %> -  <%= "%02d" % @usuario.updated_at.day %>/<%= meses[@usuario.updated_at.month-1] %>/<%= @usuario.updated_at.year %> - <%= "%02d" % calcularHora(@usuario.updated_at.hour) %>:<%= "%02d" % @usuario.updated_at.min %>:<%= "%02d" % @usuario.updated_at.sec %>
 </p>
+</div>

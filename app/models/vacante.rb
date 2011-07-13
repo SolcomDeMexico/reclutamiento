@@ -6,9 +6,7 @@ class Vacante < ActiveRecord::Base
   has_many :candidatos, :through => :solicituds
   belongs_to :area
   belongs_to :requerimiento
-  belongs_to :posicion
-  
-  
+  belongs_to :posicion  
 
   
   validates_presence_of :nombre, :message => "El nombre de la vacante es requerido."

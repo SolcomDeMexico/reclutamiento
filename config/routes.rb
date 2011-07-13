@@ -26,7 +26,7 @@ Reclutamiento::Application.routes.draw do
   resources :usuarios ,:only => [:show,:edit,:update,:index]
     
 match '/home', :to => 'sesion#home' 
-match '/login', :to => 'sesion#login'
+match '/login', :to => 'sesion#authenticate'
 match '/logout', :to => 'sesion#destroy'
 match '/aprobar_requerimiento',:to => 'requerimientos#aprobar'
 match '/convertir_requerimiento',:to => 'requerimientos#convertir'
@@ -37,7 +37,10 @@ match '/rechazar_rh_requerimiento',:to => 'requerimientos#rechazar_rh'
 match '/calificar_entrevista', :to => 'entrevista#calificar'
 match '/cancelar_entrevista', :to => 'entrevista#cancelar'
 match '/cerrar_vacante', :to => 'vacantes#cerrar'
-match '/oauth/callback', :to => 'sesion#create'
+
+match '/auth/:provider/callback', :to => 'sesion#create'
+
+#match '/oauth/callback', :to => 'sesion#create'
  #match '/auth/failure', :to => 'sesion#fail'
  
 
@@ -90,7 +93,7 @@ match '/oauth/callback', :to => 'sesion#create'
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "paginas#home"
+   root :to => 'sesion#authenticate'
 
   # See how all your routes lay out with "rake routes"
 
