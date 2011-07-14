@@ -2,8 +2,7 @@ Reclutamiento::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   RECLUTAMIENTO_PATH = "https://reclutamientosolcomdos.heroku.com"
-  SALESFORCE_CONSUMER_KEY = "3MVG9Km_cBLhsuPz2R3hJIVrGxDDRrvsv5ABOXHnIjWYzdlWGw_.XNayPC.FRg687hLAmaEm5UF1Kz9lsETuX
-"
+  SALESFORCE_CONSUMER_KEY = "3MVG9Km_cBLhsuPz2R3hJIVrGxDDRrvsv5ABOXHnIjWYzdlWGw_.XNayPC.FRg687hLAmaEm5UF1Kz9lsETuX"
   SALESFORCE_CONSUMER_SECRET = "6599103183175512827"
 
   
