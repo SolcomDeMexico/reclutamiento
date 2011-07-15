@@ -1,27 +1,27 @@
-<center><h1>Lista de Usuarios</h1></center>
+<div data-role="header">
+  <h1>Lista de Usuarios</h1>
+  <%= link_to 'Regresar', home_path, "data-icon" => "arrow-l" %>
+</div>
+
+<div data-role="content">
 <br />
 
-<table class="centrar">
-  <tr>
-    <th>Foto</th>
-    <th>Nombre</th>
-    <th>Email</th>
-  </tr>
-
+<ul data-role="listview" class="bandIntro">
 <% @usuarios.each do |usuario| %>
-  <tr>
-    <td><% if !usuario.foto_file_name.blank? %>
+  <li>
+    <%= link_to(usuario) do%>
+
+    <% if !usuario.foto_file_name.blank? %>
     <%= image_tag(usuario.foto.url(:thumb)) %>
     <% else %>
     <%= image_tag("default.png") %>
-    <% end %></td>
-    <td><%= link_to usuario.display_name , usuario%></td>
-    <td><%= usuario.email %></td>
-
+    <% end %>
     
-  </tr>
-<% end %>
-
-</table>
-<br />
+    <h3><%= usuario.display_name%></h3>
   
+  <% end %>
+  </li>
+<% end %>
+</ul>
+
+</div>

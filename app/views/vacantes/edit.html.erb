@@ -1,4 +1,7 @@
-<h1>Editar Vacante</h1>
-
+<div data-role="header">
+  <h1>Editar Vacante</h1>
+  <%= link_to 'Regresar', vacante_path(@vacante), "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <%= render 'form' %>
-
+</div>

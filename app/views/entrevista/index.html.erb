@@ -1,25 +1,22 @@
-<center><h1>Lista de Entrevistas</h1></center>
-<br/>
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Solicitud</th>
-    <th>Fecha</th>
-  </tr>
-
-<% @entrevista.each do |entrevistum| %>
-  <tr>	
-  <td><%= link_to 'Entrevista #'+entrevistum.id.to_s, entrevistum %></td>
-	<td><%= link_to entrevistum.solicitud.nombre, entrevistum.solicitud %></td>
-  <td><%= "%02d" %entrevistum.fecha.day %>/<%= meses[entrevistum.fecha.month-1] %>/<%= entrevistum.fecha.year%>-<%= "%02d" %calcularHora(entrevistum.fecha.hour) %>:<%= "%02d" % entrevistum.fecha.min%></td>
-  <% if permitted_to? :show, entrevistum %>
+<div data-role="header">
+  <h1>Lista de Entrevistas</h1>
+  <%= link_to 'Regresar', home_path, "data-icon" => "arrow-l" %>
+  <% if permitted_to? :create, Entrevistum.new %>
+    <%= link_to 'Agregar', new_entrevistum_path, "data-icon" => "plus" %>
   <% end %>
-  </tr>
-<% end %>
-</table>
+</div>
+<br/>
+<div data-role="content">
+<ul data-role="listview">
+<% @entrevista.each do |entrevistum| %>
+  <li>	
+  <%= link_to(entrevistum) do%>
+  <h3><%= "%02d" %entrevistum.fecha.day %>/<%= meses[entrevistum.fecha.month-1] %>/<%= entrevistum.fecha.year%>-<%= "%02d" %calcularHora(entrevistum.fecha.hour) %>:<%= "%02d" % entrevistum.fecha.min%></h3>
+ 	<p><%=  entrevistum.solicitud.nombre %></p>
 
-<br />
-
-<% if permitted_to? :create, Entrevistum.new %>
-<%= link_to 'Nueva Entrevista', new_entrevistum_path, :class => "primary button" %>
+  <% end %>
+  </li>
 <% end %>
+</ul>
+
+</div>

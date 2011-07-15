@@ -1,8 +1,9 @@
-<h1> Calificar entrevista</h1> 
-<center>
-<%= link_to_function "Calificar", "document.getElementById('forma_entrevista').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary button' %>
-<%= link_to "Cancelar", @entrevistum , :class => "primary button"%></center>
+<div data-role="header">
+  <h1>Calificar entrevista</h1>
+  <%= link_to 'Regresar', entrevistum_path(@entrevistum), "data-icon" => "arrow-l" %>
+</div>
 <br/>
+<div data-role="content">
 <% if @entrevistum.errors.any? %><br/><center>
     <div id="error_explanation">
       <h2><%= pluralize(@entrevistum.errors.count, "error no permite", "errores no permiten") %> registrar esta calificación:</h2>
@@ -29,5 +30,8 @@
     <%= f.text_area :comentarios %>
   </div>  
   <%= hidden_field_tag 'status', 'calificar' %>
-  
+  <div>
+  <%= f.submit "Calificar", "data-theme" => "b",  "data-inline" => "true" %>
+  </div>
 <% end %>
+</div>

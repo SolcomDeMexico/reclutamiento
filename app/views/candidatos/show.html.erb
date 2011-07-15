@@ -1,6 +1,10 @@
+<div data-role="header">
+  <h1>Detalles del candidato </h1>
+  <%= link_to 'Regresar', candidatos_path, "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <center><p id="notice"><%= notice %></p></center>
 
-<h3>Detalles del candidato</h3>
 <%= render 'botones_show'%>
 <br/>
 
@@ -230,8 +234,11 @@
   <%= @candidato.ref_telefono %>
 </p>
 
-<hr/>
-<center><h4>Información del sistema</h4></center>
+<br/>
+<%= render 'botones_show' %>
+<br/>
+<div data-role="collapsible" data-collapsed="true">
+<h5>Información del sistema</h5>
 <p>
   <b>Creado por:</b>
   <%= link_to @usuario_crea.display_name, @usuario_crea %> -  <%= "%02d" % @candidato.created_at.day %>/<%= meses[@candidato.created_at.month-1] %>/<%= @candidato.created_at.year %> - <%="%02d" %  calcularHora(@candidato.created_at.hour) %>:<%= "%02d" % @candidato.created_at.min %>:<%= "%02d" % @candidato.created_at.sec %>
@@ -241,41 +248,34 @@
   <%= link_to @usuario_actualiza.display_name , @usuario_actualiza %> -  <%= "%02d" % @candidato.updated_at.day %>/<%= meses[@candidato.updated_at.month-1] %>/<%= @candidato.updated_at.year %> - <%="%02d" %  calcularHora(@candidato.updated_at.hour) %>:<%="%02d" %  @candidato.updated_at.min %>:<%= "%02d" % @candidato.updated_at.sec %>
 </p>
 
-<%= render 'botones_show' %>
-
-<br/>
-<div class="relaciones">
-<hr />
 </div>
-<br/>
+
+<div data-role="collapsible" data-collapsed="true">
+<h5>Vacantes a las que ha aplicado este candidato</h5>
+
 <center>
   <% if permitted_to? :create, Solicitud.new %>
-<%= link_to 'Agregar Solicitud', new_solicitud_path(:candidato => @candidato.nombre,:id => @candidato.id), :class => "primary button", :align => "left" %>
+<%= link_to 'Agregar Solicitud', new_solicitud_path(:candidato => @candidato.nombre,:id => @candidato.id), "data-inline" => "true", "data-role" => "button", "data-icon" => "plus" %>
 <% end %>
 </center>
 <br/>
-<b>Vacantes a las que ha aplicado este candidato</b>
-<br/>
-<br/>
 <% if !@candidato.vacantes.empty? %>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Área</th>
-    <th>Estatus</th>
-  </tr>
+<ul data-role="listview">
 
 <% @candidato.vacantes.each do |vacante| %>
-  <tr>
-    <td><%= link_to vacante.nombre, vacante %></td>
-    <td><%= vacante.area.nombre %></td>
-    <td><%= vacante.estatus %></td>
-  </tr>
+  <li>
+    <%= link_to(vacante) do %>
+    <h3><%= vacante.nombre %></h3>
+    <p><%= vacante.area.nombre %></p>
+    <% end %> 
+  </li>
 <% end %>
 
-</table>
+</ul>
 
 <% else %>
 <p>Este candidato no ha aplicado a ninguna vacante</p>
 <% end%>
+</div>
+</div>

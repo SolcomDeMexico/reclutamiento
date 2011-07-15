@@ -1,5 +1,8 @@
+<div data-role="header">
+  <h1>Detalles de la entrevista</h1>
+  <%= link_to 'Regresar', entrevista_path, "data-icon" => "arrow-l" %>
+</div>
 <center><p id="notice"><%= notice %></p></center>
-<h3>Detalles de la entrevista</h3>
 <%= render 'botones_show'%>
 <br/>
 <p>
@@ -36,8 +39,8 @@
   <%= @entrevistum.estatus %>
 </p>
 
-
-<hr/>
+<%= render 'botones_show'%>
+<div data-role="collapsible" data-collapsed="true">
 <h5>Información del sistema</h5>
 <p>
   <b>Creado por:</b>
@@ -47,5 +50,4 @@
   <b>Actualizado por:</b>
   <%= link_to @usuario_actualiza.display_name , @usuario_actualiza %> -  <%= "%02d" % @entrevistum.updated_at.day %>/<%= meses[@entrevistum.updated_at.month-1] %>/<%= @entrevistum.updated_at.year %> - <%= "%02d" % calcularHora(@entrevistum.updated_at.hour) %>:<%= "%02d" % @entrevistum.updated_at.min %>:<%= "%02d" % @entrevistum.updated_at.sec %>
 </p>
-
-<%= render 'botones_show'%>
+</div>

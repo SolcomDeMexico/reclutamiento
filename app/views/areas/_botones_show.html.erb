@@ -1,9 +1,9 @@
 <div>
 <center>
 <% if permitted_to? :edit, @area %>
-<%= link_to 'Editar', edit_area_path(@area), :class => "primary button"%> 
+<%= link_to 'Editar', edit_area_path(@area),"data-icon" => "gear", "data-role" => "button", "data-inline" => "true" %> 
 <% end %>
 <% if permitted_to? :destroy, @area %>
-<%= link_to 'Eliminar', @area, :confirm => '¿Estas seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<%= link_to 'Eliminar', @area, :confirm => '¿Estas seguro?', :method => :delete, "data-icon" => "delete", "data-role" => "button", "data-inline" => "true" %></td> 
 <% end %>
-<%= link_to 'Regresar', areas_path, :class => "primary button" %></center></div>
+</center></div>

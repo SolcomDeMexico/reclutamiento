@@ -1,5 +1,10 @@
+<div data-role="header">
+  <h1>Detalles del Área </h1>
+  <%= link_to 'Regresar', areas_path, "data-icon" => "arrow-l" %>
+</div>
+<br/>
+<div data-role="content">
 <center><p id="notice"><%= notice %></p></center>
-<h3>Detalles de la área</h3>
 <%= render 'botones_show'%>
 <br/>
 <p>
@@ -22,7 +27,8 @@
   <%= link_to @area.usuario.display_name, @area.usuario %>
 
 </p>
-<hr/>
+<%= render 'botones_show'%>
+<div data-role="collapsible" data-collapsed="true">
 <h5>Información del sistema</h5>
 <p>
   <b>Creado por:</b>
@@ -32,39 +38,30 @@
   <b>Actualizado por:</b>
   <%= link_to @usuario_actualiza.display_name , @usuario_actualiza %> -  <%= "%02d" % @area.updated_at.day %>/<%= meses[@area.updated_at.month-1] %>/<%= @area.updated_at.year %> - <%= "%02d" % calcularHora(@area.updated_at.hour) %>:<%= "%02d" % @area.updated_at.min %>:<%= "%02d" % @area.updated_at.sec %>
 </p>
-
-<%= render 'botones_show'%>
-<br/>
-<div class="relaciones">
-<hr />
 </div>
-<br/>
+<div data-role="collapsible" data-collapsed="true">
+<h3>Departamentos que pertenecen a esta área</h3>
 <center>
   <% if permitted_to? :create, Departamento.new %>
-<%= link_to 'Agregar Departamento', new_departamento_path(:area => @area.id), :class => "primary button", :align => "left" %>
+<%= link_to 'Agregar Departamento', new_departamento_path(:area => @area.id), "data-role" => "button", "data-inline" => "true", "data-icon" => "plus" %>
 <% end %>
 </center>
 <br/>
-<b>Departamentos que pertenecen a esta área</b>
-<br/>
-<br/>
+
 <% if !@area.departamentos.empty? %>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Jefe</th>
-  </tr>
+<ul data-role="listview">
 
 <% @area.departamentos.each do |depa| %>
-  <tr>
-    <td><%= link_to depa.nombre, depa %></td>
-    <td><%= link_to Usuario.find(depa.usuario_id).display_name, Usuario.find(depa.usuario_id) %></td>
-  </tr>
+  <li>
+    <%= link_to depa.nombre, depa %>
+  </li>
 <% end %>
 
-</table>
+</ul>
 
 <% else %>
 <p>Esta área todavía no tiene ningún departamento</p>
 <% end%>
+</div>
+</div>

@@ -1,22 +1,21 @@
-<center><h1>Lista de Solicitudes</h1></center>
+<div data-role="header">
+  <h1>Lista de Solicitudes</h1>
+  <%= link_to 'Regresar', home_path, "data-icon" => "arrow-l" %>
+  <% if permitted_to? :create, Solicitud.new %>
+    <%= link_to 'Agregar', new_solicitud_path, "data-icon" => "plus" %>
+  <% end %>
+</div>
 <br/>
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Estatus</th>
-  </tr>
-
+<div data-role="content">
+<ul data-role="listview">
 <% @solicituds.each do |solicitud| %>
-  <tr>
-    <td><%= link_to solicitud.nombre, solicitud %></td>
-    <td><%= solicitud.estado %></td>
-  </tr>
+  <li>
+    <%= link_to(solicitud) do %>
+    <h3><%= solicitud.nombre %></h3>
+    <p><%= solicitud.estado %></p>
+    <% end %>  
+  </li>
 <% end %>
-</table>
+</ul>
 
-
-<br />
-
-<% if permitted_to? :create, Solicitud.new %>
-<%= link_to 'Nueva Solicitud', new_solicitud_path, :class => "primary button" %>
-<% end %>
+</div>

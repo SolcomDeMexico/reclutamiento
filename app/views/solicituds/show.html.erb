@@ -1,5 +1,8 @@
+<div data-role="header">
+  <h1>Detalles de la solicitud</h1>
+  <%= link_to 'Regresar', solicituds_path, "data-icon" => "arrow-l" %>
+</div>
 <center><p id="notice"><%= notice %></p></center>
-<h3>Detalles de la solicitud</h3>
 
 <%= render 'botones_show'%>
 <br/>
@@ -17,7 +20,9 @@
   <b>Estatus:</b>
   <%= @solicitud.estado %>
 </p>
-<hr/>
+
+<br/>
+<div data-role="collapsible" data-collapsed="true">
 <h5>Información del sistema</h5>
 <p>
   <b>Creado por:</b>
@@ -27,34 +32,22 @@
   <b>Actualizado por:</b>
   <%= link_to @usuario_actualiza.display_name, @usuario_actualiza %> -  <%= "%02d" % @solicitud.updated_at.day %>/<%= meses[@solicitud.updated_at.month-1] %>/<%= @solicitud.updated_at.year %> - <%= "%02d" % calcularHora(@solicitud.updated_at.hour) %>:<%= "%02d" % @solicitud.updated_at.min %>:<%= "%02d" % @solicitud.updated_at.sec %>
 </p>
-<%= render 'botones_show'%>
-<br/>
-<div class="relaciones">
-<hr/>
 </div>
-<br/>
+<div data-role="collapsible" data-collapsed="true">
+<h5>Entrevistas agendadas para esta solicitud</h5>
 <center>
 <% if permitted_to? :create, Entrevistum.new %>
-<%= link_to 'Agregar Entrevista', new_entrevistum_path(:solicitud => @solicitud.nombre, :id => @solicitud.id), :class => "primary button", :align => "left" %>
+<%= link_to 'Agregar Entrevista', new_entrevistum_path(:solicitud => @solicitud.nombre, :id => @solicitud.id), "data-role" => "button", "data-icon" => "plus", "data-inline" => "true" %>
 <% end %></center>
-<br/>
-<b>Entrevistas agendadas para esta solicitud</b>
-<br/>
-<br/>
 
-<table>
-<tr>
-    <th>Fecha de la Entrevista</th>
-    <th>Entrevistador</th>
-    <th>Estatus</th>
-  </tr>
-
+<ul data-role="listview">
 <% @solicitud.entrevistum.each do |entrevistum| %>
-  <tr>	
-    <td><%= "%02d" %entrevistum.fecha.day %>/<%= meses[entrevistum.fecha.month] %>/<%= entrevistum.fecha.year%>-<%= "%02d" % calcularHora(entrevistum.fecha.hour) %>:<%= "%02d" % entrevistum.fecha.min%></td>
-    <td><%= entrevistum.usuario.display_name %></td>
-    <td><%= entrevistum.estatus %></td>
-  </tr>
+  <li>
+    <%= link_to(entrevistum) do %> 	
+    <h3><%= "%02d" %entrevistum.fecha.day %>/<%= meses[entrevistum.fecha.month] %>/<%= entrevistum.fecha.year%>-<%= "%02d" % calcularHora(entrevistum.fecha.hour) %>:<%= "%02d" % entrevistum.fecha.min%></h3>
+    <p>Entrevistador : <%= entrevistum.usuario.display_name %></p>
+    <% end %> 
+  </li>
 <% end %>  
 
-</table>
+</ul>

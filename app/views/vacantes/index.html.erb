@@ -1,31 +1,21 @@
-<center><h1>Lista de vacantes</h1></center>
+<div data-role="header">
+  <h1>Lista de Vacantes</h1>
+  <%= link_to 'Regresar', home_path, "data-icon" => "arrow-l" %>
+  <% if permitted_to? :create, Vacante.new %>
+    <%= link_to 'Agregar', new_vacante_path, "data-icon" => "plus" %>
+  <% end %>
+</div>
 
-<br />
-
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Tipo</th>
-    <th>Área</th>
-    <th>Estatus</th>
-    <th>Fecha de Inicio</th>
-    <th></th>
-  </tr>
-
-<% @vacantes.each do |vacante| %>
-  <tr>
-    <td><%= link_to vacante.nombre, vacante %></td>
-    <td><%= vacante.tipo %></td>
-    <td><%= vacante.area.nombre %></td>
-    <td><%= vacante.estatus %></td>
-    <td><%= "%02d" % vacante.fecha_inicio_reclutamiento.day %>/<%= meses[vacante.fecha_inicio_reclutamiento.month-1] %>/<%= vacante.fecha_inicio_reclutamiento.year %></td>
-  </tr>
-<% end %>
-
-</table>
-
-<br />
-
-<% if permitted_to? :create, Vacante.new %>
-<%= link_to 'Nueva vacante', new_vacante_path, :class => "primary button" %>
-<% end %>
+<br/>
+<div data-role="content">
+    <ul data-role="listview">
+      <% @vacantes.each do |vacante| %>
+        <li>
+          <%= link_to(vacante) do %>
+            <h3><%= vacante.nombre %></h3>
+            <p><%= vacante.tipo %> -- <%= vacante.area.nombre %></p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+</div>

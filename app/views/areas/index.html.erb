@@ -1,23 +1,21 @@
-<center><h1>Lista de Áreas</h1></center>
+<div data-role="header">
+  <h1>Lista de Áreas</h1>
+  <%= link_to 'Regresar', home_path, "data-icon" => "arrow-l" %>
+  <% if permitted_to? :create, Area.new %>
+    <%= link_to 'Agregar', new_area_path, "data-icon" => "plus" %>
+  <% end %>
+</div>
 <br/>
-
-
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Gerente</th>
-  </tr>
-  </tr>
+<div data-role="content">
+  <ul data-role="listview">    
 
 <% @areas.each do |area| %>
-  <tr>
-    <td><%= link_to area.nombre, area %></td>
-    <td><%= link_to area.usuario.display_name, area.usuario %></td>
-   </tr>
+  <li>
+  <%= link_to(area) do%>
+  <h3><%= area.nombre %></h3>
+    <p>Gerente: <%= area.usuario.display_name %></p>
+    <% end %>
+  </li>
 <% end %>
-</table>
+</ul>
 
-<br />
-<% if permitted_to? :create, Area.new %>
-<%= link_to 'Nueva Área', new_area_path, :class => "primary button" %>
-<% end %>

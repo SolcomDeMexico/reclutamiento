@@ -1,4 +1,11 @@
-<h1>Editar Usuario</h1>
 
+<div data-role="header">
+  <h1>Editar Usuario</h1>
+  <%= link_to 'Regresar', usuario_path(@usuario), "data-icon" => "arrow-l" %>
+</div>
+<br>
+
+<div data-role="content">
 <%= render 'form' %>
+</div>
 

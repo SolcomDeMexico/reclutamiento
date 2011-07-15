@@ -1,4 +1,7 @@
-<h1>Editar departamento</h1>
-
+<div data-role="header">
+  <h1>Editar Departamento</h1>
+  <%= link_to 'Regresar', departamento_path(@departamento), "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <%= render 'form' %>
-
+</div>

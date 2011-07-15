@@ -1,4 +1,7 @@
-<h1>Nueva entrevista</h1>
-
+<div data-role="header">
+  <h1>Nueva Entrevista</h1>
+  <%= link_to 'Regresar', entrevista_path, "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <%= render 'form' %>
-
+</div>

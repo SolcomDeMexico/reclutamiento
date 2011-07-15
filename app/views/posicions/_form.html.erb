@@ -1,8 +1,6 @@
 <%= form_for(@posicion,  :html => { :multipart => true , :id => "forma_posicion"}) do |f| %>
 
 <br/>
-<%= render 'botones_forma'%>
-<br/>
   <% if @posicion.errors.any? %>
     <center><div id="error_explanation">
       <h2><%= pluralize(@posicion.errors.count, "error no permite","errores no permiten") %> registrar a esta posición:</h2>
@@ -24,6 +22,7 @@
     <%= f.label :Área%><br />
     <%= f.collection_select(:area_id, Area.all, :id , :nombre, options = {:prompt => "Selecciona un área"})  %>
   </div>
-
-  <%= render 'botones_forma'%>  
+  <div>
+  <%= f.submit "Guardar" , "data-theme" => "b",  "data-inline" => "true"%>
+  </div>
 <% end %>

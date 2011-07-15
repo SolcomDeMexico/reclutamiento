@@ -1,26 +1,21 @@
-<center> <h1> Lista de Requerimientos </h1> </center>
-
-<br />
-
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Fecha de contratación deseada</th>    
-    <th>Estatus</th>
-  </tr>
-
+<div data-role="header">
+  <h1>Lista de Requerimientos</h1>
+  <%= link_to 'Regresar', home_path, "data-icon" => "arrow-l" %>
+  <% if permitted_to? :create, Requerimiento.new %>
+    <%= link_to 'Agregar', new_requerimiento_path, "data-icon" => "plus" %>
+  <% end %>
+</div>
+<br/>
+<div data-role="content">
+<ul data-role="listview">
 <% @requerimientos.each do |requerimiento| %>
-  <tr>
-    <td><%= link_to requerimiento.nombre, requerimiento %></td>
-    <td><%="%02d" % requerimiento.fecha_contratacion_deseada.day %>/<%= meses[requerimiento.fecha_contratacion_deseada.month-1] %>/<%= requerimiento.fecha_contratacion_deseada.year %></td>
-    <td><%= requerimiento.estatus %></td>
-  </tr>
+    <li>
+    <%= link_to(requerimiento) do%>
+    <h3><%= requerimiento.nombre %></h3>
+      <p><%= requerimiento.estatus %></p>
+    <% end %>
+    </li>
 <% end %>
+</ul>
+</div>
 
-</table>
-
-<br />
-
-<% if permitted_to? :create, Requerimiento.new %>
-<%= link_to 'Nuevo requerimiento', new_requerimiento_path, :class => "primary button" %>
-<% end %>

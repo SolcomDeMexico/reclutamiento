@@ -1,32 +1,31 @@
-<div class="button-group"><center>
+<div><center>
   <% if permitted_to? :edit , @requerimiento%>
     <% if @requerimiento.estatus != "Convertido en Vacante"%>
       <% if !(@requerimiento.estatus != 'En aprobación' && (current_user.role == 'empleado' || current_user.role == 'jefe_departamento'))  %>
-        <%= link_to 'Editar', edit_requerimiento_path(@requerimiento), :class => "primary  button" %> 
+        <%= link_to 'Editar', edit_requerimiento_path(@requerimiento), "data-icon" => "gear", "data-role" => "button", "data-inline" => "true"  %> 
       <% end %>
     <% end %>
   <% end %>
   <% if @requerimiento.estatus == 'En aprobación'%>
     <% if permitted_to? :cancelar , @requerimiento%>
-      <%= link_to 'Cancelar', {:controller => :requerimientos, :action => "cancelar", :id => @requerimiento},  :confirm => '¿Estás seguro?', :class => "primary negative  button" %>
+      <%= link_to 'Cancelar', {:controller => :requerimientos, :action => "cancelar", :id => @requerimiento},  :confirm => '¿Estás seguro?', "data-icon" => "minus", "data-role" => "button", "data-inline" => "true"   %>
     <% end %>
     <% if permitted_to? :aprobar, @requerimiento%>
-      <%= link_to "Aprobar", {:controller => :requerimientos, :action => "aprobar", :id => @requerimiento},  :class => "primary  button" %>
+      <%= link_to "Aprobar", {:controller => :requerimientos, :action => "aprobar", :id => @requerimiento}, "data-icon" => "check", "data-role" => "button" , "data-inline" => "true"  %>
     <% end %>
     <% if permitted_to? :rechazar , @requerimiento%>
-      <%= link_to 'Rechazar', {:controller => :requerimientos, :action => "rechazar", :id => @requerimiento}, :class => "primary negative  button" %>
+      <%= link_to 'Rechazar', {:controller => :requerimientos, :action => "rechazar", :id => @requerimiento}, "data-icon" => "minus", "data-role" => "button",  "data-inline" => "true"  %>
     <% end %>
   <% end %>
   <% if @requerimiento.estatus == 'Aprobado por Gerente de Área'%>
     <% if permitted_to? :rechazar_rh , @requerimiento%>
-      <%= link_to 'Rechazar', {:controller => :requerimientos, :action => "rechazar_rh", :id => @requerimiento},  :class => "primary negative  button" %>
+      <%= link_to 'Rechazar', {:controller => :requerimientos, :action => "rechazar_rh", :id => @requerimiento}, "data-icon" => "minus", "data-role" => "button", "data-inline" => "true"   %>
     <% end %>
     <% if permitted_to? :convertir , @requerimiento%>
-      <%= link_to 'Convertir a Vacante', {:controller => :requerimientos, :action => "convertir", :id => @requerimiento},  :class => "primary  button" %>
+      <%= link_to 'Convertir a Vacante', {:controller => :requerimientos, :action => "convertir", :id => @requerimiento}, "data-icon" => "check", "data-role" => "button",  "data-inline" => "true"   %>
     <% end %>
   <% end %>
   <% if permitted_to? :destroy , @requerimiento%>
-    <%= link_to 'Eliminar', @requerimiento, :confirm => '¿Estás seguro?', :method => :delete, :class => "primary negative  button" %></td> 
-  <% end %>
-  <%= link_to 'Regresar', requerimientos_path, :class => "primary button" %>
-</center></div>
+    <%= link_to 'Eliminar', @requerimiento, :confirm => '¿Estás seguro?', :method => :delete, "data-icon" => "delete", "data-role" => "button",  "data-inline" => "true"  %> 
+  <% end %></center>
+</div>

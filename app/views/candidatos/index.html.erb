@@ -1,26 +1,23 @@
+<div data-role="header">
+  <h1>Lista de Candidatos</h1>
+  <%= link_to 'Regresar', home_path, "data-icon" => "arrow-l" %>
+  <% if permitted_to? :create, Candidato.new %>
+    <%= link_to 'Agregar', new_candidato_path, "data-icon" => "plus" %>
+  <% end %>
+</div>
 <center><h1>Lista de Candidatos</h1></center>
 <br/>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Email</th>
-    <th>Carrera</th>
-    <th>Teléfono</th>
-  </tr>
-  </tr>
+<ul data-role="listview">
 
 <% @candidatos.each do |candidato| %>
-  <tr>
-    <td><%= link_to candidato.nombre, candidato %></td>
-    <td><%= candidato.email %></td>
-    <td><%= candidato.carrera %></td>
-    <td><%= candidato.celular %></td>
-   </tr>
+  <li>
+    <%= link_to(candidato) do %>
+    <h3><%= candidato.nombre %></h3>
+    <p><%= candidato.carrera %></p>
+    <% end %>  
+ </li>
 <% end %>
-</table>
+</ul>
 
-<br />
-<% if permitted_to? :create, Candidato.new %>
-<%= link_to 'Nuevo Candidato', new_candidato_path, :class => "primary button" %>
-<% end %>
+

@@ -1,3 +1,9 @@
+<div data-role="header">
+  <h1>Detalles del departamento  </h1>
+  <%= link_to 'Regresar', area_path(@departamento.area), "data-icon" => "arrow-l" %>
+</div>
+<br/>
+<div data-role="content">
 <center><p id="notice"><%= notice %></p></center>
 <h3>Detalles del departamento</h3>
 <%= render 'botones_show'%>
@@ -17,7 +23,8 @@
   <%= link_to @jefe.display_name, @jefe %>
 
 </p>
-<hr/>
+<%= render 'botones_show'%>
+<div data-role="collapsible" data-collapsed="true">
 <h5>Información del sistema</h5>
 <p>
   <b>Creado por:</b>
@@ -27,33 +34,24 @@
   <b>Actualizado por:</b>
   <%= link_to @usuario_actualiza.display_name , @usuario_actualiza %> -  <%= "%02d" % @departamento.updated_at.day %>/<%= meses[@departamento.updated_at.month-1] %>/<%= @departamento.updated_at.year %> - <%= "%02d" % calcularHora(@departamento.updated_at.hour) %>:<%= "%02d" % @departamento.updated_at.min %>:<%= "%02d" % @departamento.updated_at.sec %>
 </p>
-
-<%= render 'botones_show'%>
-<br/>
-
-<div class="relaciones">
-<hr />
 </div>
-<br/>
-<br/>
-<b>Empleados que pertenecen a este departamento</b>
-<br/>
+<div data-role="collapsible" data-collapsed="true">
+<h3>Empleados que pertenecen a este departamento</h3>
 <br/>
 <% if !@departamento.usuarios.empty? %>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-  </tr>
+<ul data-role="listview">
 
 <% @departamento.usuarios.each do |usuario| %>
-  <tr>
-    <td><%= link_to usuario.display_name, usuario %></td>
-  </tr>
+  <li>
+    <%= link_to usuario.display_name, usuario %>
+  </li>
 <% end %>
 
-</table>
+</ul>
 
 <% else %>
 <p>Este departamento todavía no tiene ningún empleado</p>
 <% end%>
+</div>
+</div>

@@ -1,3 +1,7 @@
-<h1>Editar requerimiento</h1>
-
+<div data-role="header">
+  <h1>Editar Requerimiento</h1>
+  <%= link_to 'Regresar', requerimiento_path(@requerimiento), "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <%= render 'form' %>
+</div>

@@ -1,8 +1,3 @@
-<% if current_action == "Aprobado por Gerente de Área"%>
-<h1>Aprobar Requerimiento</h1>
-<% else %>
-<h1>Rechazar Requerimiento</h1>
-<% end %>
 <br/>
 <p>
   <b>Nombre:</b>
@@ -14,13 +9,12 @@
   <%= f.text_area :comentarios_gerente %>
   <%= f.hidden_field :estatus, :value => current_action %>
 </div>
-
-
-<% end %>
-
+<div>
 <% if current_action == "Aprobado por Gerente de Área"%>
-<%= link_to_function "Aprobar", "document.getElementById('forma_requerimiento').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary button' %>
+<%= f.submit "Aprobar",:confirm => '¿Estás seguro?', "data-role" => "button", "data-icon" => "check",  "data-theme" => "b",  "data-inline" => "true"  %>
 <% else %>
-<%= link_to_function "Rechazar", "document.getElementById('forma_requerimiento').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary negative button' %>
+<%= f.submit "Rechazar",:confirm => '¿Estás seguro?', "data-role" => "button", "data-icon" => "delete",  "data-inline" => "true"  %>
 <% end %>
-<%= link_to "Cancelar", @requerimiento , :class => "primary button"%>
+</div>
+
+<% end %>

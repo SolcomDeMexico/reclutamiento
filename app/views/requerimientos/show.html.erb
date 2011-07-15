@@ -1,6 +1,11 @@
+<div data-role="header">
+  <h1>Detalles del requerimiento</h1>
+  <%= link_to 'Regresar', requerimientos_path, "data-icon" => "arrow-l" %>
+</div>
+
+<div data-role="content">
 <center><p id="notice"><%= notice %></p></center>
 
-<h3>Detalles de requerimiento</h3>
 <%= render 'botones_show' %>
 
 <br/>
@@ -71,7 +76,7 @@
 </p>
 <%= render 'botones_show' %>
 <br/>
-<hr/>
+<div data-role="collapsible" data-collapsed="true">
 <h5>Información del sistema</h5>
 <p>
   <b>Creado por:</b>
@@ -81,6 +86,6 @@
   <b>Actualizado por:</b>
   <%= link_to @usuario_actualiza.display_name, @usuario_actualiza %> -  <%= "%02d" % @requerimiento.updated_at.day %>/<%= meses[@requerimiento.updated_at.month-1] %>/<%= @requerimiento.updated_at.year %> - <%="%02d" % calcularHora(@requerimiento.updated_at.hour) %>:<%= "%02d" % @requerimiento.updated_at.min %>:<%= "%02d" % @requerimiento.updated_at.sec %>
 </p>
+</div>
 
-
-<br/>
+</div>

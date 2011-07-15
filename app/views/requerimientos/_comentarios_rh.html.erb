@@ -1,9 +1,3 @@
-<% if current_action == "Convertido en Vacante"%>
-<h1>Convertir Requerimiento en Vacante</h1>
-<% else %>
-<h1>Rechazar Requerimiento</h1>
-<% end %>
-<br/>
 <p>
   <b>Nombre:</b>
   <%= @requerimiento.nombre %>
@@ -25,11 +19,12 @@
   </div>  
 <% end %>
 
-<% end %>
-
+<div>
 <% if current_action == "Convertido en Vacante"%>
-<%= link_to_function "Convertir en Vacante", "document.getElementById('forma_requerimiento').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary button' %>
+<%= f.submit "Convertir en Vacante",:confirm => '¿Estás seguro?', "data-role" => "button", "data-icon" => "check",  "data-theme" => "b",  "data-inline" => "true"  %>
 <% else %>
-<%= link_to_function "Rechazar", "document.getElementById('forma_requerimiento').submit();" , :confirm => '¿Estás seguro?' , :class=> 'primary negative button' %>
+<%= f.submit "Rechazar",:confirm => '¿Estás seguro?', "data-role" => "button", "data-icon" => "delete",  "data-inline" => "true"  %>
 <% end %>
-<%= link_to "Cancelar", @requerimiento , :class => "primary button"%>
+</div>
+
+<% end %>

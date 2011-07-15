@@ -1,3 +1,7 @@
-<h1>Nuevo candidato</h1>
-
+<div data-role="header">
+  <h1>Nuevo Candidato</h1>
+  <%= link_to 'Regresar', candidatos_path, "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <%= render 'form' %>
+</div>

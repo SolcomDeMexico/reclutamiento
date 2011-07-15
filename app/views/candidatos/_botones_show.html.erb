@@ -1,9 +1,9 @@
 <div>
 <center>
 <% if permitted_to? :edit, @candidato %>
-<%= link_to 'Editar', edit_candidato_path(@candidato), :class => "primary button"%> 
+<%= link_to 'Editar', edit_candidato_path(@candidato), "data-icon" => "gear", "data-role" => "button", "data-inline" => "true" %> 
 <% end %>
 <% if permitted_to? :destroy, @candidato %>
-<%= link_to 'Eliminar', @candidato, :confirm => '¿Estas seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<%= link_to 'Eliminar', @candidato, :confirm => '¿Estas seguro?', "data-icon" => "delete", "data-role" => "button", "data-inline" => "true" %></td> 
 <% end %>
-<%= link_to 'Regresar', candidatos_path, :class => "primary button" %></center></div>
+</center></div>

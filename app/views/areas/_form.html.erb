@@ -1,5 +1,4 @@
 <%= form_for(@area, :html => {:id => "forma_area"}) do |f| %>
-  <%= render 'botones_forma'%>
 <% if @area.errors.any? %><br/><center>
     <div id="error_explanation">
       <h2><%= pluralize(@area.errors.count, "error no permite", "errores no permiten") %> registrar esta área:</h2>
@@ -31,6 +30,7 @@
     <%= autocomplete_field_tag 'gerente','', autocomplete_usuario_display_name_areas_path, :update_elements => {:id => '#area_usuario_id' } %>
     <%= f.hidden_field :usuario_id %>
   </div>
-
-  <%= render 'botones_forma'%>  
+  <div>
+  <%= f.submit "Guardar", "data-inline" => "true", "data-theme" => "b"%>  
+</div>
 <% end %>

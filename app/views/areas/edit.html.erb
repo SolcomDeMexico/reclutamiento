@@ -1,4 +1,7 @@
-<h1>Editar área</h1>
-
+<div data-role="header">
+  <h1>Editar Área</h1>
+  <%= link_to 'Regresar', area_path(@area), "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <%= render 'form' %>
-
+</div>

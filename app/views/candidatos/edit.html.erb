@@ -1,4 +1,7 @@
-<h1>Editar Candidato</h1>
-
+<div data-role="header">
+  <h1>Editar Candidato</h1>
+  <%= link_to 'Regresar', candidato_path(@candidato), "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <%= render 'form' %>
-
+</div>

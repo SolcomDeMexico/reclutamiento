@@ -1,6 +1,9 @@
+<div data-role="header">
+  <h1>Detalles de la vacante</h1>
+  <%= link_to 'Regresar', vacantes_path, "data-icon" => "arrow-l" %>
+</div>
+<div data-role="content">
 <center><p id="notice"><%= notice %></p></center>
-
-<h3>Detalles de vacante</h3>
 
 <%= render 'botones_show'%>
 <br/>
@@ -99,8 +102,10 @@
   <% end %>
 </p>  
 <% end %>
-<hr/>
-<h5>Información del sistema</h5>
+
+<%= render 'botones_show'%>
+<div data-role="collapsible" data-collapsed="true">
+<h3>Información del sistema</h3>
 <p>
   <b>Creado por:</b>
   <%= link_to @usuario_crea.display_name , @usuario_crea %> -  <%="%02d" %  @vacante.created_at.day %>/<%= meses[@vacante.created_at.month-1] %>/<%= @vacante.created_at.year %> - <%= "%02d" % calcularHora(@vacante.created_at.hour) %>:<%= "%02d" % @vacante.created_at.min %>:<%= "%02d" % @vacante.created_at.sec %>
@@ -110,41 +115,32 @@
   <%= link_to @usuario_actualiza.display_name, @usuario_actualiza %> -  <%= "%02d" % @vacante.updated_at.day %>/<%= meses[@vacante.updated_at.month-1] %>/<%= @vacante.updated_at.year %> - <%="%02d" % calcularHora(@vacante.updated_at.hour) %>:<%= "%02d" % @vacante.updated_at.min %>:<%= "%02d" % @vacante.updated_at.sec %>
 </p>
 
-<%= render 'botones_show'%>
-<br/>
-<br/>
-<div class="relaciones">
-<hr />
 </div>
-<br/>
+<div data-role="collapsible" data-collapsed="true">
+<h3>Solicitudes asociadas a esta vacante</h3>
 <center>
   <% if permitted_to? :create, Solicitud.new %>
-<%= link_to 'Agregar Solicitud', new_solicitud_path(:vacante => @vacante.nombre, :id => @vacante.id), :class => "primary button", :align => "left" %>
+<%= link_to 'Agregar Solicitud', new_solicitud_path(:vacante => @vacante.nombre, :id => @vacante.id), "data-icon" => "plus", "data-role" => "button", "data-inline" => "true" %>
 <% end %>
 </center>
 <br/>
-<b>Solicitudes asociadas a esta vacante:</b>
-<br/>
 <br/>
 <% if !@vacante.solicituds.empty? %>
-
-<table>
-  <tr>
-    <th>Solicitud</th>
-    <th>Estatus</th>
-  </tr>
-
+<ul data-role="listview">
 <% @vacante.solicituds.each do |solicitud| %>
-  <tr>
-    <td><%= link_to solicitud.nombre, solicitud %></td>
-    <td><%= solicitud.estado %></td>
-  </tr>
+  <li>
+    <%= link_to(solicitud) do %>
+      <h3><%= solicitud.nombre%></h3>
+      <p><%= solicitud.estado %></p>
+    <% end %>
+  </li>
 <% end %>
+</ul>
 
-</table>
 
 <% else %>
-<p>Ningún candidato ha aplicado a esta vacante</p>
+<b><p>Ningún candidato ha aplicado a esta vacante</p></b>
 <% end%>
-
+</div>
+</div>
   

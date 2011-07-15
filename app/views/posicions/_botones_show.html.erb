@@ -1,9 +1,9 @@
 <div>
 <center>
 <% if permitted_to? :edit, @posicion %>
-<%= link_to 'Editar', edit_posicion_path(@posicion), :class => "primary button"%> 
+<%= link_to 'Editar', edit_posicion_path(@posicion), "data-icon" => "gear", "data-role" => "button", "data-inline" => "true"%> 
 <% end %>
 <% if permitted_to? :destroy, @posicion %>
-<%= link_to 'Eliminar', @posicion, :confirm => '¿Estas seguro?', :method => :delete, :class => "primary negative button" %></td> 
+<%= link_to 'Eliminar', @posicion, :confirm => '¿Estas seguro?', :method => :delete, "data-icon" => "delete", "data-role" => "button", "data-inline" => "true" %></td> 
 <% end %>
-<%= link_to 'Regresar', posicions_path, :class => "primary button" %></center></div>
+</center></div>
