@@ -15,6 +15,6 @@ end
 
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :forcedotcom, '3MVG9yZ.WNe6byQBDbtmxf76aSYWI9V0VC0sQsZI1JPdbcrcSG3TFcxxYN0UrvqcIzVSYJZjFUy6vEBJCt52o', '5159525136769792583'
+  provider :forcedotcom, SALESFORCE_CONSUMER_KEY, SALESFORCE_CONSUMER_SECRET
   
 end
