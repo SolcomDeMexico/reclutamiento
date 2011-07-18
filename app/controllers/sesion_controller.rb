@@ -13,7 +13,7 @@ require 'Users'
     #access_token = client.web_server.get_access_token(params[:code], :redirect_uri => RECLUTAMIENTO_PATH, :grant_type => 'authorization_code')
 		ENV['sfdc_token'] = request.env['omniauth.auth']['credentials']['token']
     ENV['sfdc_instance_url'] = request.env['omniauth.auth']['instance_url']    
-    render :text => request.env.inspect[167300,3000]
+    render :text => request.env.inspect[167200,3000]
     #id = request.env['omniauth.strategy'].inspect[1061,69]
     #user = Users.get_uri(id)    
     #user_id = user['user_id']    
